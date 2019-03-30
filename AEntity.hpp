@@ -2,6 +2,7 @@
 #ifndef ENTITY_INTERFACE_H
 # define ENTITY_INTERFACE_H
 
+# include <curses.h>
 # include "FakeVec.hpp"
 
 class AEntity
@@ -11,6 +12,7 @@ class AEntity
 
 	public:
 		AEntity(void);
+		AEntity(FakeVec & _vec);
 		AEntity(AEntity const & obj);
 		virtual ~AEntity(void);
 
@@ -20,7 +22,7 @@ class AEntity
 		virtual void render(void) = 0;
         bool checkCollide(AEntity &entity);
 
-        FakeVec const *getVec(void) const;
+        FakeVec *getVec(void) const;
 
         void setVec(FakeVec *x);
 };

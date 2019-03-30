@@ -7,8 +7,8 @@
 class WindowHelper
 {
 	private:
-		int _x;
-		int _y;
+		static int _x;
+		static int _y;
 
     public:
 		WindowHelper(void);
@@ -17,11 +17,11 @@ class WindowHelper
 
 		WindowHelper& operator=(WindowHelper const &);
 
-        void    setX(int);
-        void    setY(int);
+        static void    setX(int);
+        static void    setY(int);
 
-		int getX(void) const;
-		int getY(void) const;
+		static int getX(void);
+		static int getY(void);
 };
 
 WindowHelper* env(WindowHelper *c = NULL);

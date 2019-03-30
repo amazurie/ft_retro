@@ -5,6 +5,10 @@ AEntity::AEntity(void) :
 {
 }
 
+AEntity::AEntity(FakeVec & vec) : _vec(&vec)
+{
+}
+
 AEntity::AEntity(AEntity const & obj) :
 	_vec(obj._vec)
 {
@@ -26,7 +30,7 @@ bool AEntity::checkCollide(AEntity &entity)
 	return (_vec == entity._vec);
 }
 
-FakeVec const *AEntity::getVec(void) const
+FakeVec *AEntity::getVec(void) const
 {
 	return _vec;
 }

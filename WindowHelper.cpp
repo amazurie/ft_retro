@@ -2,6 +2,9 @@
 #include <csignal>
 #include "WindowHelper.hpp"
 
+int		WindowHelper::_x = 0;
+int		WindowHelper::_y = 0;
+
 void	onResize(int)
 {
 	endwin();
@@ -10,11 +13,11 @@ void	onResize(int)
 
 	int x, y;
 	getmaxyx(stdscr, y, x);
-    //TODO
-    //do set x / y
+	WindowHelper::setY(y);
+	WindowHelper::setX(x);
 }
 
-WindowHelper::WindowHelper(void) : _x(0), _y(0)
+WindowHelper::WindowHelper(void)
 {
 	initscr();
 	cbreak();
@@ -62,12 +65,12 @@ void WindowHelper::setY(int y)
 	_y = y;
 }
 
-int WindowHelper::getX(void) const
+int WindowHelper::getX(void)
 {
 	return _x;
 }
 
-int WindowHelper::getY(void) const
+int WindowHelper::getY(void)
 {
 	return _y;
 }
