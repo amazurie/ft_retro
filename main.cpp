@@ -43,10 +43,14 @@ int		main(void)
 		count++;
 		if (count > 300)
 		{
-//			entities.addEnt(new Enemy(FakeVec(0, (rand() % (WindowHelper::getX() / 2) + 20))));
+			entities.addEnt(new Enemy(new FakeVec(0, (rand() % (WindowHelper::getX() / 2) + 20))));
 			count = 0;
 		}
-		entities.addEnt(new Wall(new FakeVec(0, 0), 1));
+		if (count % 10 == 0)
+		{
+			entities.addEnt(new Wall(new FakeVec(0, 0), 1));
+			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), 0), 2));
+		}
 		clear();
 		entities.renderAll();
 		refresh();

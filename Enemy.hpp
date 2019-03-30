@@ -19,6 +19,7 @@ class Enemy : public AEntity
 
 		void update(void);
 		void render(void);
+		bool checkCollide(AEntity &entity);
 };
 
 #endif // ENEMY_HPP

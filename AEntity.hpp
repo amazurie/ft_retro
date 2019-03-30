@@ -20,7 +20,7 @@ class AEntity
 
 		virtual void update(void) = 0;
 		virtual void render(void) = 0;
-        bool checkCollide(AEntity &entity);
+		virtual bool checkCollide(AEntity &entity) = 0;
 
         FakeVec *getVec(void) const;
 

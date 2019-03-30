@@ -31,3 +31,8 @@ void	Enemy::render()
 {
 
 }
+
+bool	Enemy::checkCollide(AEntity &entity)
+{
+	return false;
+}

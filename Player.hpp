@@ -16,6 +16,7 @@ class Player : public AEntity
 
 		void render(void);
 		void update(void);
+		bool checkCollide(AEntity &entity);
 
 		Player &	operator=( Player const & rhs );
 };

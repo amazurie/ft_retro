@@ -4,20 +4,20 @@
 class FakeVec {
 
     private:
-        int   _x;
-        int   _y;
+        float   _x;
+        float   _y;
 
     public:
         FakeVec(void);
-        FakeVec(int x, int y);
+        FakeVec(float x, float y);
         FakeVec(FakeVec const & src);
         ~FakeVec(void);
 
-        int     getX(void) const;
-        int     getY(void) const;
+        float     getX(void) const;
+        float     getY(void) const;
 
-        void    setX(int);
-        void    setY(int);
+        void    setX(float);
+        void    setY(float);
 
         FakeVec & operator=(FakeVec const & src);
         FakeVec   operator+(FakeVec const & rhs) const;

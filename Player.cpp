@@ -50,3 +50,8 @@ void		Player::update(void)
 {
 
 }
+
+bool	Player::checkCollide(AEntity &entity)
+{
+	return false;
+}
