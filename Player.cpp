@@ -36,8 +36,18 @@ Player &	Player::operator=( Player const & rhs )
 
 void		Player::render(void)
 {
-	move(getVec()->getY(), getVec()->getX());
-	addstr("P");
+	move(getVec()->getY() - 3, getVec()->getX() - 8);
+	addstr("  _ _ _  ");
+	move(getVec()->getY() - 2, getVec()->getX() - 8);
+	addstr("||=====||");
+	move(getVec()->getY() - 1, getVec()->getX() - 7);
+	addstr("\\=====/");
+	move(getVec()->getY(), getVec()->getX() - 7);
+	addstr("|=====|");
+	move(getVec()->getY() + 1, getVec()->getX() - 8);
+	addstr("|=======|");
+	move(getVec()->getY() + 2, getVec()->getX() - 8);
+	addstr("|| ||| || ");
 }
 
 void		Player::update(void)
