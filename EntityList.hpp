@@ -15,10 +15,12 @@ class EntityList
 		unsigned int	getNbEnts() const;
 		unsigned int	getNbMaxEnts() const;
 		bool			addEnt(AEntity *);
+		bool			addEntsTab(unsigned int size, AEntity** ents);
 		bool			delEnt(AEntity *);
 		void			updateAll(void);
 		void			renderAll(void);
 		bool			checkCollide();
+		void			checkOOW();
 
 	private:
 		EntityList();
@@ -26,6 +28,7 @@ class EntityList
 		unsigned int		_nbEnts;
 		AEntity**			_list;
 		unsigned int		_findEnt(AEntity *, bool &) const;
+		void				_collideEvent(AEntity &, AEntity &);
 };
 
 #endif

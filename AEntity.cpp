@@ -26,11 +26,6 @@ AEntity& AEntity::operator=(AEntity const &rhs)
 	return *this;
 }
 
-bool AEntity::checkCollide(AEntity &entity)
-{
-	return (_vec == entity._vec);
-}
-
 FakeVec *AEntity::getVec(void) const
 {
 	return _vec;

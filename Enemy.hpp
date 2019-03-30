@@ -20,7 +20,8 @@ class Enemy : public AEntity
 		void update(void);
 		void render(void);
 
-		bool checkCollide(AEntity &entity);
+		bool checkCollide(AEntity &ent) const;
+		bool checkOOW() const;
 };
 
 #endif // ENEMY_HPP

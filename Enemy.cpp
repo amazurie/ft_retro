@@ -8,7 +8,7 @@ Enemy::Enemy(FakeVec *vec) : AEntity(ENEMY, vec)
 {
 }
 
-Enemy::Enemy(Enemy const & obj) : AEntity(obj)
+Enemy::Enemy(Enemy const & src) : AEntity(src.getType(), src.getVec())
 {
 }
 
@@ -32,7 +32,31 @@ void	Enemy::render()
 
 }
 
-bool	Enemy::checkCollide(AEntity &entity)
+// No type check required because enemies doesn't collide with walls
+// and player is already checked, so bullets only
+
+bool	Enemy::checkCollide(AEntity &ent) const
 {
-	return false;
+	if (BULLET != ent.getType())
+	{
+		// debug?
+	}
+
+	else if ((getVec()->getX() == ent.getVec()->getX())
+		|| (getVec()->getY() == ent.getVec()->getY()))
+	{
+		return (true);
+	}
+
+	return (false);
+}
+
+bool	Enemy::checkOOW() const
+{
+	if (getVec()->getY() < WindowHelper::getY())
+	{
+		return (true);
+	}
+
+	return (false);
 }
