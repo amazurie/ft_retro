@@ -76,7 +76,7 @@ bool	Wall::checkCollide(AEntity &ent) const
 
 bool	Wall::checkOOW() const
 {
-	if (getVec()->getY() < WindowHelper::getY())
+	if (getVec()->getY() > WindowHelper::getY())
 	{
 		return (true);
 	}

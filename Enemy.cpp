@@ -77,7 +77,7 @@ bool	Enemy::checkCollide(AEntity &ent) const
 
 bool	Enemy::checkOOW() const
 {
-	if (getVec()->getY() < WindowHelper::getY())
+	if (getVec()->getY() > WindowHelper::getY())
 	{
 		return (true);
 	}
