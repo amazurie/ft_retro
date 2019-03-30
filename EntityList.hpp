@@ -16,13 +16,13 @@ public:
 	unsigned int	getNbMaxEnts() const;
 	bool			addEnt(AEntity *);
 	bool			delEnt(AEntity *);
+	bool			checkCollide();
 
 private:
 	EntityList();
 	unsigned int		_nbMaxEnts;
 	unsigned int		_nbEnts;
 	AEntity**			_list;
-	bool				_contiguous;
 	unsigned int		_findEnt(AEntity *, bool &) const;
 };
 

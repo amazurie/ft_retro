@@ -27,3 +27,8 @@ void	Enemy::render()
 {
 
 }
+
+bool	Enemy::isCollide(AEntity & ent)
+{
+
+}
