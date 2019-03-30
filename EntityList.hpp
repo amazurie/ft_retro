@@ -16,7 +16,6 @@ public:
 	unsigned int	getNbMaxEnts() const;
 	bool			addEnt(AEntity *);
 	bool			delEnt(AEntity *);
-	void				debug();
 
 private:
 	EntityList();
