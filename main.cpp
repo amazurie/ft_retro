@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <ctime>
+#include <ncurses.h>
 #include "WindowHelper.hpp"
 #include "AEntity.hpp"
 #include "Player.hpp"
@@ -34,6 +35,8 @@ int		main(void)
 	int	count = 0;
 	std::srand(time(NULL));
 
+	WINDOW *win = newwin(3, 10, 0, 0);
+
 	while (1)
 	{
 		usleep(3000);
@@ -43,7 +46,7 @@ int		main(void)
 		count++;
 		if (count > 300)
 		{
-			entities.addEnt(new Enemy(new FakeVec(0, (rand() % (WindowHelper::getX() / 2) + 20))));
+			entities.addEnt(new Enemy(new FakeVec((rand() % (WindowHelper::getX() / 2) + (WindowHelper::getX() / 4)), 0)));
 			count = 0;
 		}
 		if (count % 10 == 0)
@@ -53,6 +56,9 @@ int		main(void)
 		}
 		clear();
 		entities.renderAll();
+		wmove(win, 0, 0);
+		addstr(" lives : ");
+		addch('0' + 3);
 		refresh();
 	}
 

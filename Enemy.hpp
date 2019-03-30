@@ -7,6 +7,7 @@
 class Enemy : public AEntity
 {
 	private:
+		int		_direction;
 		
 		Enemy(void);
 
