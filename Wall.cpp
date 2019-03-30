@@ -5,20 +5,14 @@ Wall::Wall( void )
 	return;
 }
 
-Wall::Wall( FakeVec vec, int pos ) :
-	AEntity(vec), _size(rand() % 10), _pos(pos)
-{
-	return;
-}
-
-Wall::Wall( FakeVec & vec, int pos ) :
+Wall::Wall( FakeVec *vec, int pos ) :
 	AEntity(vec), _size(rand() % 10), _pos(pos)
 {
 	return;
 }
 
 Wall::Wall( Wall const & src ) :
-	_size(src._size), _pos(src._pos)
+	AEntity(src) ,_size(src._size), _pos(src._pos)
 {
 	*this = src;
 	return;
@@ -37,20 +31,35 @@ Wall &	Wall::operator=( Wall const & rhs )
 	return *this;
 }
 
-#include <fstream>
 void		Wall::render(void)
 {
 	int i;
 
-	move(getVec()->getY(), getVec()->getX());
+	if (_pos == 1)
+	{
+		move(getVec()->getY(), getVec()->getX());
+		attron(COLOR_PAIR(2));
+		i = _size;
+		while (i--)
+			addstr(" ");
+		attroff(COLOR_PAIR(2));
+		return ;
+	}
+	move(getVec()->getY(), getVec()->getX() - _size);
 	attron(COLOR_PAIR(2));
 	i = _size;
 	while (i--)
 		addstr(" ");
 	attroff(COLOR_PAIR(2));
+	return ;
 }
 
 void		Wall::update(void)
 {
-	getVec()->setY(getVec()->getY() + 1);
+	getVec()->setY(getVec()->getY() + 0.1);
+}
+
+bool	Wall::checkCollide(AEntity &entity)
+{
+	return false;
 }

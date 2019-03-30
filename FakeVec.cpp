@@ -5,7 +5,7 @@ FakeVec::FakeVec(void) : _x(0), _y(0)
     return;
 }
 
-FakeVec::FakeVec(int x, int y) : _x(x), _y(y)
+FakeVec::FakeVec(float x, float y) : _x(x), _y(y)
 {
     return;
 }
@@ -20,22 +20,22 @@ FakeVec::~FakeVec(void)
     return;
 }
 
-int      FakeVec::getX(void) const
+float      FakeVec::getX(void) const
 {
     return _x;
 }
 
-int      FakeVec::getY(void) const
+float      FakeVec::getY(void) const
 {
     return _y;
 }
 
-void     FakeVec::setX(int n)
+void     FakeVec::setX(float n)
 {
     _x = n;
 }
 
-void     FakeVec::setY(int n)
+void     FakeVec::setY(float n)
 {
     _y = n;
 }

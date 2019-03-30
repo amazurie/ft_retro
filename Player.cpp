@@ -5,13 +5,7 @@ Player::Player( void )
 	return;
 }
 
-Player::Player( FakeVec vec ) :
-	AEntity(vec)
-{
-	return;
-}
-
-Player::Player( FakeVec & vec ) :
+Player::Player( FakeVec *vec ) :
 	AEntity(vec)
 {
 	return;
@@ -55,4 +49,9 @@ void		Player::render(void)
 void		Player::update(void)
 {
 
+}
+
+bool	Player::checkCollide(AEntity &entity)
+{
+	return false;
 }

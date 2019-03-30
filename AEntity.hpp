@@ -12,7 +12,7 @@ class AEntity
 
 	public:
 		AEntity(void);
-		AEntity(FakeVec & _vec);
+		AEntity(FakeVec *_vec);
 		AEntity(AEntity const & obj);
 		virtual ~AEntity(void);
 
@@ -20,7 +20,8 @@ class AEntity
 
 		virtual void update(void) = 0;
 		virtual void render(void) = 0;
-        virtual bool isCollide(AEntity &entity) = 0;
+
+		virtual bool checkCollide(AEntity &entity) = 0;
 
         FakeVec *getVec(void) const;
 

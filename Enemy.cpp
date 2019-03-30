@@ -4,7 +4,7 @@ Enemy::Enemy(void) : AEntity()
 {
 }
 
-Enemy::Enemy(FakeVec vec) : AEntity( vec )
+Enemy::Enemy(FakeVec *vec) : AEntity( vec )
 {
 }
 
@@ -32,7 +32,7 @@ void	Enemy::render()
 
 }
 
-bool	Enemy::isCollide(AEntity & ent)
+bool	Enemy::checkCollide(AEntity &entity)
 {
-
+	return false;
 }

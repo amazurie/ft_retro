@@ -10,13 +10,13 @@ class Player : public AEntity
 		Player( void );
 
 	public:
-		Player( FakeVec _vec );
-		Player( FakeVec & _vec );
+		Player( FakeVec *_vec );
 		Player( Player const & src );
 		~Player( void );
 
 		void render(void);
 		void update(void);
+		bool checkCollide(AEntity &entity);
 
 		Player &	operator=( Player const & rhs );
 

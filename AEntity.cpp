@@ -5,7 +5,7 @@ AEntity::AEntity(void) :
 {
 }
 
-AEntity::AEntity(FakeVec & vec) : _vec(&vec)
+AEntity::AEntity(FakeVec *vec) : _vec(vec)
 {
 }
 
@@ -16,6 +16,7 @@ AEntity::AEntity(AEntity const & src) :
 
 AEntity::~AEntity(void)
 {
+	delete _vec;
 }
 
 AEntity& AEntity::operator=(AEntity const &rhs)

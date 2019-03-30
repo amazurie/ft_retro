@@ -11,7 +11,7 @@ class Enemy : public AEntity
 		Enemy(void);
 
 	public:
-		Enemy(FakeVec vec);
+		Enemy(FakeVec *vec);
 		Enemy(Enemy const & obj);
 		~Enemy(void);
 
@@ -20,7 +20,7 @@ class Enemy : public AEntity
 		void update(void);
 		void render(void);
 
-		bool isCollide(AEntity &entity);
+		bool checkCollide(AEntity &entity);
 };
 
 #endif // ENEMY_HPP
