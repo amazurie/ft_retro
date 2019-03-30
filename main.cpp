@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <ctime>
+#include <ncurses.h>
 #include "WindowHelper.hpp"
 #include "AEntity.hpp"
 #include "Player.hpp"
@@ -43,7 +44,7 @@ int		main(void)
 		count++;
 		if (count > 300)
 		{
-			entities.addEnt(new Enemy(new FakeVec(0, (rand() % (WindowHelper::getX() / 2) + 20))));
+			entities.addEnt(new Enemy(new FakeVec((rand() % (WindowHelper::getX() / 2) + (WindowHelper::getX() / 4)), 0)));
 			count = 0;
 		}
 		if (count % 10 == 0)
@@ -53,6 +54,13 @@ int		main(void)
 		}
 		clear();
 		entities.renderAll();
+		move(1, 1);
+		addstr(" Lives  : ");
+		addch('0' + 3);
+		move(2, 1);
+		addstr(" Points : ");
+		addch('0');
+		move(3, 1);
 		refresh();
 	}
 

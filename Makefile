@@ -6,7 +6,7 @@
 #    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/25 09:44:22 by amazurie          #+#    #+#              #
-#    Updated: 2019/03/30 15:19:32 by amazurie         ###   ########.fr        #
+#    Updated: 2019/03/30 19:47:32 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC	= main.cpp \
 	  Player.cpp \
 	  EntityList.cpp \
 	  Enemy.cpp \
+	  Bullet.cpp \
 	  Wall.cpp
 
 OBJS	= $(SRC:.cpp=.o)

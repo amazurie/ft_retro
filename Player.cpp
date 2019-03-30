@@ -29,18 +29,21 @@ Player &	Player::operator=( Player const & rhs )
 
 void		Player::render(void)
 {
-	move(getVec()->getY() - 3, getVec()->getX() - 8);
+	int	x = getVec()->getX();
+	int	y = getVec()->getY();
+
+	move(y - 3, x - 4);
 	attron(COLOR_PAIR(1));
 	addstr("  _ _ _  ");
-	move(getVec()->getY() - 2, getVec()->getX() - 8);
+	move(y - 2, x - 4);
 	addstr("||=====||");
-	move(getVec()->getY() - 1, getVec()->getX() - 7);
+	move(y - 1, x - 3);
 	addstr("\\=====/");
-	move(getVec()->getY(), getVec()->getX() - 7);
+	move(y, x - 3);
 	addstr("|=====|");
-	move(getVec()->getY() + 1, getVec()->getX() - 8);
+	move(y + 1, x - 4);
 	addstr("|=======|");
-	move(getVec()->getY() + 2, getVec()->getX() - 8);
+	move(y + 2, x - 4);
 	addstr("|| ||| || ");
 	attroff(COLOR_PAIR(1));
 }
