@@ -19,8 +19,6 @@ class Player : public AEntity
 		bool checkCollide(AEntity &entity);
 
 		Player &	operator=( Player const & rhs );
-
-		bool isCollide(AEntity &entity);
 };
 
 #endif /* PLAYER_H */

@@ -5,7 +5,7 @@ AEntity::AEntity(void) :
 {
 }
 
-AEntity::AEntity(FakeVec *vec) : _vec(vec)
+AEntity::AEntity(EntType type, FakeVec *vec) : _type(type), _vec(vec)
 {
 }
 
@@ -21,8 +21,8 @@ AEntity::~AEntity(void)
 
 AEntity& AEntity::operator=(AEntity const &rhs)
 {
+	_type = rhs._type;
 	_vec = rhs._vec;
-
 	return *this;
 }
 
@@ -39,4 +39,9 @@ FakeVec *AEntity::getVec(void) const
 void AEntity::setVec(FakeVec *v)
 {
     _vec = v;
+}
+
+EntType	AEntity::getType() const
+{
+	return (_type);
 }

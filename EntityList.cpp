@@ -90,22 +90,23 @@ bool		EntityList::delEnt(AEntity *ent)
 
 bool	EntityList::checkCollide()
 {
-	if ((0 == _nbEnts) || (0 == _nbMaxEnts))
-		return;
-
-	bool		playerCollision = false;
-	AEntity*	player = _list[0];
-
-	for (unsigned int i = 0; i < _nbEnts; ++i)
-	{
-		for (unsigned int j = (i + 1); j < _nbEnts; ++j)
-		{
-			if (_list[i].isCollide(_list[j]))
-			{
-				// do stuff
-			}			
-		}
-	}
+	return false;
+//	if ((0 == _nbEnts) || (0 == _nbMaxEnts))
+//		return;
+//
+//	bool		playerCollision = false;
+//	AEntity*	player = _list[0];
+//
+//	for (unsigned int i = 0; i < _nbEnts; ++i)
+//	{
+//		for (unsigned int j = (i + 1); j < _nbEnts; ++j)
+//		{
+//			if (_list[i].isCollide(_list[j]))
+//			{
+//				// do stuff
+//			}			
+//		}
+//	}
 }
 
 

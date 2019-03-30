@@ -6,13 +6,13 @@ Wall::Wall( void )
 }
 
 Wall::Wall( FakeVec *vec, int pos ) :
-	AEntity(vec), _size(rand() % 10), _pos(pos)
+	AEntity(WALL, vec), _size(rand() % 10), _pos(pos)
 {
 	return;
 }
 
 Wall::Wall( Wall const & src ) :
-	AEntity(src) ,_size(src._size), _pos(src._pos)
+	AEntity(src.getType(), src.getVec()), _size(src._size), _pos(src._pos)
 {
 	*this = src;
 	return;

@@ -5,14 +5,23 @@
 # include <curses.h>
 # include "FakeVec.hpp"
 
+typedef enum Type
+{
+	PLAYER,
+	ENEMY,
+	BULLET,
+	WALL
+} EntType;
+
 class AEntity
 {
 	private:
-		FakeVec *_vec;
+		EntType		_type;
+		FakeVec		*_vec;
 
 	public:
 		AEntity(void);
-		AEntity(FakeVec *_vec);
+		AEntity(EntType type, FakeVec *_vec);
 		AEntity(AEntity const & obj);
 		virtual ~AEntity(void);
 
@@ -23,7 +32,8 @@ class AEntity
 
 		virtual bool checkCollide(AEntity &entity) = 0;
 
-        FakeVec *getVec(void) const;
+        FakeVec		*getVec(void) const;
+        EntType		getType() const;
 
         void setVec(FakeVec *x);
 };

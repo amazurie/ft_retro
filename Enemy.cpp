@@ -4,7 +4,7 @@ Enemy::Enemy(void) : AEntity()
 {
 }
 
-Enemy::Enemy(FakeVec *vec) : AEntity( vec )
+Enemy::Enemy(FakeVec *vec) : AEntity(ENEMY, vec)
 {
 }
 

@@ -6,7 +6,7 @@ Player::Player( void )
 }
 
 Player::Player( FakeVec *vec ) :
-	AEntity(vec)
+	AEntity(PLAYER, vec)
 {
 	return;
 }
