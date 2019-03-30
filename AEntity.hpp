@@ -7,7 +7,7 @@
 class AEntity
 {
 	private:
-        FakeVec *_vec;
+		FakeVec *_vec;
 
 	public:
 		AEntity(void);

@@ -1,7 +1,7 @@
 #include "AEntity.hpp"
 
 AEntity::AEntity(void) :
-	_vec(new FakeVec())
+	_vec(new FakeVec)
 {
 }
 
