@@ -13,13 +13,12 @@ class Wall : public AEntity
 		Wall( void );
 
 	public:
-		Wall( FakeVec _vec , int pos);
-		Wall( FakeVec & _vec , int pos);
+		Wall( FakeVec *_vec , int pos);
 		Wall( Wall const & src );
-		virtual ~Wall( void );
+		~Wall( void );
 
-		virtual void render(void);
-		virtual void update(void);
+		void render(void);
+		void update(void);
 
 		Wall &	operator=( Wall const & rhs );
 };

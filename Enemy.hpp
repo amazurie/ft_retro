@@ -11,7 +11,7 @@ class Enemy : public AEntity
 		Enemy(void);
 
 	public:
-		Enemy(FakeVec vec);
+		Enemy(FakeVec *vec);
 		Enemy(Enemy const & obj);
 		~Enemy(void);
 

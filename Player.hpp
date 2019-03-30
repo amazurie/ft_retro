@@ -10,8 +10,7 @@ class Player : public AEntity
 		Player( void );
 
 	public:
-		Player( FakeVec _vec );
-		Player( FakeVec & _vec );
+		Player( FakeVec *_vec );
 		Player( Player const & src );
 		~Player( void );
 

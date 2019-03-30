@@ -12,7 +12,7 @@ class AEntity
 
 	public:
 		AEntity(void);
-		AEntity(FakeVec & _vec);
+		AEntity(FakeVec *_vec);
 		AEntity(AEntity const & obj);
 		virtual ~AEntity(void);
 

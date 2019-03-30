@@ -29,24 +29,24 @@ int		main(void)
 {
     WindowHelper w = WindowHelper();
 	EntityList entities(1024);
-	Player *p = new Player(FakeVec(WindowHelper::getX() / 2, WindowHelper::getY() / 2));
+	Player *p = new Player(new FakeVec(WindowHelper::getX() / 2, WindowHelper::getY() / 2));
 	entities.addEnt(p);
 	int	count = 0;
+	std::srand(time(NULL));
 
 	while (1)
 	{
 		usleep(3000);
 		timeout(0);
 		check_input(p);
+		entities.updateAll();
 		count++;
 		if (count > 300)
 		{
-			entities.addEnt(new Enemy(FakeVec(0, (rand() % (WindowHelper::getX() / 2) + 20))));
+//			entities.addEnt(new Enemy(FakeVec(0, (rand() % (WindowHelper::getX() / 2) + 20))));
 			count = 0;
 		}
-		entities.updateAll();
-		std::srand(time(NULL));
-		entities.addEnt(new Wall(FakeVec(0, 0), 1));
+		entities.addEnt(new Wall(new FakeVec(0, 0), 1));
 		clear();
 		entities.renderAll();
 		refresh();
