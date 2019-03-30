@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 # include "AEntity.hpp"
-# include "FakeVec.hpp"
 
 class Player : public AEntity
 {

@@ -6,7 +6,7 @@
 #    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/25 09:44:22 by amazurie          #+#    #+#              #
-#    Updated: 2019/03/30 10:17:31 by amazurie         ###   ########.fr        #
+#    Updated: 2019/03/30 14:22:28 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC	= main.cpp \
 	  AEntity.cpp \
 	  FakeVec.cpp \
 	  WindowHelper.cpp \
-	  Player.cpp
+	  Player.cpp \
+	  Wall.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 DEPS	= $(OSRC:.o=.d)

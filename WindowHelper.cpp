@@ -35,8 +35,8 @@ WindowHelper::WindowHelper(void)
     start_color();
 
 	init_color(COLOR_BLUE, 300, 600, 1000);
-    init_pair(1, COLOR_BLUE, COLOR_BLUE);
-    init_pair(2, COLOR_BLUE, COLOR_BLACK);
+    init_pair(1, COLOR_BLUE, COLOR_BLACK);
+    init_pair(2, COLOR_WHITE, COLOR_YELLOW);
     return ;
 }
 

@@ -1,7 +1,9 @@
 #include <unistd.h>
+#include <ctime>
 #include "WindowHelper.hpp"
 #include "AEntity.hpp"
 #include "Player.hpp"
+#include "Wall.hpp"
 #include "FakeVec.hpp"
 
 void	check_input(Player *p)
@@ -25,6 +27,8 @@ int		main(void)
 {
     WindowHelper w = WindowHelper();
 	Player *p = new Player(FakeVec(WindowHelper::getX() / 2, WindowHelper::getY() / 2));
+	std::srand(time(NULL));
+	Wall *wall = new Wall(FakeVec(0, 0), 1);
 
 	while (1)
 	{
@@ -33,6 +37,8 @@ int		main(void)
 		check_input(p);
 		clear();
 		p->render();
+		wall->render();
+		wall->update();
 		refresh();
 	}
 

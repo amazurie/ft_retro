@@ -37,6 +37,7 @@ Player &	Player::operator=( Player const & rhs )
 void		Player::render(void)
 {
 	move(getVec()->getY() - 3, getVec()->getX() - 8);
+	attron(COLOR_PAIR(1));
 	addstr("  _ _ _  ");
 	move(getVec()->getY() - 2, getVec()->getX() - 8);
 	addstr("||=====||");
@@ -48,6 +49,7 @@ void		Player::render(void)
 	addstr("|=======|");
 	move(getVec()->getY() + 2, getVec()->getX() - 8);
 	addstr("|| ||| || ");
+	attroff(COLOR_PAIR(1));
 }
 
 void		Player::update(void)
