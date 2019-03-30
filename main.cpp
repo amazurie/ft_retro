@@ -35,8 +35,6 @@ int		main(void)
 	int	count = 0;
 	std::srand(time(NULL));
 
-	WINDOW *win = newwin(3, 10, 0, 0);
-
 	while (1)
 	{
 		usleep(3000);
@@ -56,9 +54,13 @@ int		main(void)
 		}
 		clear();
 		entities.renderAll();
-		wmove(win, 0, 0);
-		addstr(" lives : ");
+		move(1, 1);
+		addstr(" Lives  : ");
 		addch('0' + 3);
+		move(2, 1);
+		addstr(" Points : ");
+		addch('0');
+		move(3, 1);
 		refresh();
 	}
 

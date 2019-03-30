@@ -18,13 +18,13 @@ class EntityList
 		bool			delEnt(AEntity *);
 		void			updateAll(void);
 		void			renderAll(void);
+		bool			checkCollide();
 
 	private:
 		EntityList();
 		unsigned int		_nbMaxEnts;
 		unsigned int		_nbEnts;
 		AEntity**			_list;
-		bool				_contiguous;
 		unsigned int		_findEnt(AEntity *, bool &) const;
 };
 

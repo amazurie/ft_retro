@@ -5,7 +5,7 @@ Enemy::Enemy(void) : AEntity()
 {
 }
 
-Enemy::Enemy(FakeVec *vec) : AEntity( vec ),
+Enemy::Enemy(FakeVec *vec) : AEntity( ENEMY, vec ),
 	 _direction(rand() % 2 == 1 ? 1 : 0)
 {
 }
