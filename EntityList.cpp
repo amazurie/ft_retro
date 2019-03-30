@@ -4,12 +4,10 @@
 EntityList::EntityList(unsigned int size) :
 	_nbMaxEnts(size), _nbEnts(0), _list(new AEntity *[_nbMaxEnts])
 {
-	std::cout << "Contructor called" << std::endl;
 }
 
 EntityList::EntityList(EntityList const &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -18,7 +16,6 @@ EntityList		&EntityList::operator=(EntityList const &rhs)
 	_nbMaxEnts = rhs._nbMaxEnts;
 	_nbEnts = rhs._nbEnts;
 	_list = rhs._list;
-	std::cout << "Assignment operator called" << std::endl;
 	return (*this);
 }
 
@@ -27,7 +24,6 @@ EntityList::~EntityList()
 	for (unsigned int i = 0; i < _nbEnts; ++i)
 		delete _list[i];
 	delete [] _list;
-	std::cout << "Destructor called" << std::endl;
 }
 
 bool			EntityList::addEnt(AEntity *ent)
@@ -53,7 +49,7 @@ unsigned int	EntityList::_findEnt(AEntity *ent, bool & found) const
 {
 	unsigned int i = 0;
 
-	for (; i < _nbEnts; ++i)
+	for (; i < _nbEnts; i++)
 	{
 		if (_list[i] == ent)
 		{
@@ -87,4 +83,16 @@ bool		EntityList::delEnt(AEntity *ent)
 	}
 	_nbEnts -= 1;
 	return (true);
+}
+
+void	EntityList::updateAll(void)
+{
+	for (unsigned int i = 0; i < _nbEnts; i++)
+		_list[i]->update();
+}
+
+void	EntityList::renderAll(void)
+{
+	for (unsigned int i = 0; i < _nbEnts; i++)
+		_list[i]->render();
 }
