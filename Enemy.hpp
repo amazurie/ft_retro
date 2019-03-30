@@ -1,14 +1,17 @@
 #ifndef ENEMY_HPP
 # define ENEMY_HPP
 
-# include "AEntity.hpp" 
+# include "AEntity.hpp"
+# include "FakeVec.hpp"
 
 class Enemy : public AEntity
 {
 	private:
 		
-	public:
 		Enemy(void);
+
+	public:
+		Enemy(FakeVec vec);
 		Enemy(Enemy const & obj);
 		~Enemy(void);
 

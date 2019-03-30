@@ -6,7 +6,7 @@
 #    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/25 09:44:22 by amazurie          #+#    #+#              #
-#    Updated: 2019/03/30 14:22:28 by amazurie         ###   ########.fr        #
+#    Updated: 2019/03/30 15:19:32 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC	= main.cpp \
 	  FakeVec.cpp \
 	  WindowHelper.cpp \
 	  Player.cpp \
+	  EntityList.cpp \
+	  Enemy.cpp \
 	  Wall.cpp
 
 OBJS	= $(SRC:.cpp=.o)

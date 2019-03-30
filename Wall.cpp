@@ -6,13 +6,13 @@ Wall::Wall( void )
 }
 
 Wall::Wall( FakeVec vec, int pos ) :
-	AEntity(vec), _size(rand() % 5), _pos(pos)
+	AEntity(vec), _size(rand() % 10), _pos(pos)
 {
 	return;
 }
 
 Wall::Wall( FakeVec & vec, int pos ) :
-	AEntity(vec), _pos(pos)
+	AEntity(vec), _size(rand() % 10), _pos(pos)
 {
 	return;
 }
@@ -37,6 +37,7 @@ Wall &	Wall::operator=( Wall const & rhs )
 	return *this;
 }
 
+#include <fstream>
 void		Wall::render(void)
 {
 	int i;

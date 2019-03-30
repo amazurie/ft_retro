@@ -4,6 +4,10 @@ Enemy::Enemy(void) : AEntity()
 {
 }
 
+Enemy::Enemy(FakeVec vec) : AEntity( vec )
+{
+}
+
 Enemy::Enemy(Enemy const & obj) : AEntity(obj)
 {
 }
