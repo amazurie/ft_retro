@@ -64,7 +64,7 @@ bool	Star::checkBox(float startX, float startY, float endX, float endY) const
 	int	x = getVec()->getX();
 	int y = getVec()->getY();
 
-	if ((startX <= x && startY <= y && endX >= x && endY >= y))
+	if ((startX <= x && startY <= y) && (endX >= x && endY >= y))
 		return true;
 	return (false);
 }
