@@ -6,12 +6,13 @@ Player::Player( void )
 }
 
 Player::Player( FakeVec *vec ) :
-	AEntity(PLAYER, vec)
+	AEntity(PLAYER, vec), _shootInt(3)
 {
 	return;
 }
 
-Player::Player( Player const & src ) : AEntity(src.getType(), src.getVec())
+Player::Player( Player const & src ) :
+	AEntity(src.getType(), src.getVec()), _shootInt(src._shootInt)
 {
 	return;
 }
@@ -24,6 +25,7 @@ Player::~Player( void )
 Player &	Player::operator=( Player const & rhs )
 {
 	AEntity::operator=(rhs);
+	_shootInt = rhs._shootInt;
 	return *this;
 }
 
@@ -91,19 +93,25 @@ bool	Player::checkBox(float startX, float startY, float endX, float endY) const
 	return true;
 }
 
-int		Player::bulletNum() const
+int		Player::bulletNum()
 {
-	return 2;
+	if (!_shootInt)
+	{
+		_shootInt = 3;
+		return 2;
+	}
+	_shootInt--;
+	return 0;
 }
 
-AEntity *Player::getBullets(int & i)
+AEntity *Player::getBullets(int & i) const
 {
 	if (i == 2)
 	{
 		i--;
-		return (new Bullet(new FakeVec(getVec()->getX() - 1, getVec()->getY() - 2)));
+		return (new Bullet(new FakeVec(getVec()->getX() - 3, getVec()->getY() - 3)));
 	}
 	else if (i-- == 1)
-		return (new Bullet(new FakeVec(getVec()->getX() + 1, getVec()->getY() - 2)));
+		return (new Bullet(new FakeVec(getVec()->getX() + 3, getVec()->getY() - 3)));
 	return NULL;
 }

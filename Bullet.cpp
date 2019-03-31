@@ -69,12 +69,12 @@ bool	Bullet::checkBox(float startX, float startY, float endX, float endY) const
 	return false;
 }
 
-int		Bullet::bulletNum() const
+int		Bullet::bulletNum()
 {
 	return 0;
 }
 
-AEntity	*Bullet::getBullets(int &)
+AEntity	*Bullet::getBullets(int &) const
 {
 	return NULL;
 }

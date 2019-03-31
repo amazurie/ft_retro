@@ -7,6 +7,7 @@
 class WindowHelper
 {
 	private:
+		static unsigned int _score;
 		static int _x;
 		static int _y;
 		static bool _pause;
@@ -18,10 +19,13 @@ class WindowHelper
 
 		WindowHelper& operator=(WindowHelper const &);
 
+        static void		setScore(unsigned int);
+		static void		addScore(unsigned int);
         static void		setX(int);
         static void		setY(int);
 		static void		setPause(bool);
 
+		static unsigned int	getScore(void);
 		static int	getX(void);
 		static int	getY(void);
 		static bool	getPause(void);

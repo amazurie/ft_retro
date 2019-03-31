@@ -110,12 +110,12 @@ bool	Wall::checkBox(float startX, float startY, float endX, float endY) const
 	return true;
 }
 
-int		Wall::bulletNum() const
+int		Wall::bulletNum()
 {
 	return 0;
 }
 
-AEntity	*Wall::getBullets(int &)
+AEntity	*Wall::getBullets(int &) const
 {
 	return NULL;
 }

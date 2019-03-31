@@ -122,6 +122,7 @@ void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 	if (((BULLET == ent1.getType()) && (ENEMY == ent2.getType()))
 		|| ((ENEMY == ent1.getType()) && (ENEMY == ent2.getType())))
 	{
+		WindowHelper::addScore(100);
 		delEnt(&ent1);
 		delEnt(&ent2);
 	}
@@ -211,7 +212,7 @@ void	EntityList::shootAll()
 	for (unsigned int i = 0; i < nb; i++)
 	{
 		j = _list[i]->bulletNum();
-		if (j)
+		while (j)
 		{
 			AEntity *e = _list[i]->getBullets(j);
 			if (e != NULL)

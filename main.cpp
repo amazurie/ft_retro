@@ -41,25 +41,64 @@ void	check_input(Player *p)
 		if (c == 'w')
 			p->getVec()->setY(p->getVec()->getY() - 1);
 		else if (c == 'a')
-			p->getVec()->setX(p->getVec()->getX() - 1);
+			p->getVec()->setX(p->getVec()->getX() - 2);
 		else if (c == 's')
 			p->getVec()->setY(p->getVec()->getY() + 1);
 		else if (c == 'd')
-			p->getVec()->setX(p->getVec()->getX() + 1);
+			p->getVec()->setX(p->getVec()->getX() + 2);
 		else if (c == 'p')
 			WindowHelper::setPause(true);
 	}
+}
+
+void	infoBoard()
+{
+	unsigned int sc;
+	int	i;
+	int j;
+
+	sc = WindowHelper::getScore();
+	j = sc;
+	i = 1;
+	while (j /= 10)
+		i *= 10;
+	attron(COLOR_PAIR(5));
+	move(1, 1);
+	addstr(" Lives : ");
+	addstr(">:) ");
+	j = 1;
+	while (i / j > 100)
+	{
+		j *= 10;
+		addch(' ');
+	}
+	move(2, 1);
+	addstr(" Score : ");
+	j = i;
+	while (i)
+	{
+		addch('0' + sc / i % 10);
+		i /= 10;
+	}
+	addch(' ');
+	attroff(COLOR_PAIR(5));
 }
 
 int		main(void)
 {
     WindowHelper w = WindowHelper();
 	EntityList entities(1024);
-	Player *p = new Player(new FakeVec(WindowHelper::getX() / 2, WindowHelper::getY() / 2));
+	Player *p = new Player(new FakeVec(WindowHelper::getX() / 2, WindowHelper::getY() - 20));
 	entities.addEnt(p);
 	int	count = 0;
 	std::srand(time(NULL));
 
+	int	y = WindowHelper::getY();
+	while (y--)
+	{
+			entities.addEnt(new Wall(new FakeVec(0, y), 1));
+			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), y), 2));
+	}
 	while (1)
 	{
 		usleep(3000);
@@ -96,13 +135,7 @@ int		main(void)
 		}
 		clear();
 		entities.renderAll();
-		move(1, 1);
-		addstr(" Lives  : ");
-		addch('0' + 3);
-		move(2, 1);
-		addstr(" Points : ");
-		addch('0');
-		move(3, 1);
+		infoBoard();
 		refresh();
 	}
 

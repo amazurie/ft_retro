@@ -31,8 +31,10 @@ void		Star::render(void)
 	if (!(isRendered()))
 		return;
 
+	attron(COLOR_PAIR(4));
 	move(getVec()->getY(), getVec()->getX());
 	addstr("*");
+	attroff(COLOR_PAIR(4));
 }
 
 void		Star::update(void)
@@ -52,9 +54,7 @@ bool	Star::checkCollide(AEntity &ent) const
 bool	Star::checkOOW() const
 {
 	if (getVec()->getY() > WindowHelper::getY())
-	{
 		return (true);
-	}
 
 	return (false);
 }
@@ -74,12 +74,12 @@ void	Star::resize(int, int)
 
 }
 
-int		Star::bulletNum() const
+int		Star::bulletNum()
 {
 	return 0;
 }
 
-AEntity	*Star::getBullets(int &)
+AEntity	*Star::getBullets(int &) const
 {
 	return NULL;
 }

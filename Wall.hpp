@@ -24,8 +24,8 @@ class Wall : public AEntity
 		bool checkCollide(AEntity &ent) const;
 		bool checkBox(float startX, float startY, float endX, float endY) const;
 		bool checkOOW() const;
-		int		bulletNum() const;
-		AEntity	*getBullets(int &);
+		int		bulletNum();
+		AEntity	*getBullets(int &) const;
 
 		Wall &	operator=( Wall const & rhs );
 };

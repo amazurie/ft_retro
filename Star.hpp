@@ -21,8 +21,8 @@ class Star : public AEntity
 		bool checkOOW() const;
 		bool checkBox(float, float, float, float) const;
 		void resize(int, int);
-		int		bulletNum() const;
-		AEntity	*getBullets(int &);
+		int		bulletNum();
+		AEntity	*getBullets(int &) const;
 
 		Star &	operator=( Star const & rhs );
 };
