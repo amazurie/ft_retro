@@ -35,21 +35,14 @@ void	Bullet::render()
 
 void	Bullet::update()
 {
-	getVec()->setX(getVec()->getX() - 1);
+	getVec()->setY(getVec()->getY() - 1);
 }
 
 bool	Bullet::checkCollide(AEntity &ent) const
 {
-	if (PLAYER == ent.getType())
-	{
-		// debug ?
-	}
-
-	else if (ent.checkBox(getVec()->getX(), getVec()->getY(),
+	if (ent.checkBox(getVec()->getX(), getVec()->getY(),
 				getVec()->getX(), getVec()->getY()))
-	{
 		return (true);
-	}
 
 	return (false);
 }
@@ -57,9 +50,7 @@ bool	Bullet::checkCollide(AEntity &ent) const
 bool	Bullet::checkOOW() const
 {
 	if (getVec()->getY() < 0)
-	{
 		return (true);
-	}
 
 	return (false);
 }
@@ -83,7 +74,7 @@ int		Bullet::bulletNum() const
 	return 0;
 }
 
-AEntity	*Bullet::getBullets(int &) const
+AEntity	*Bullet::getBullets(int &)
 {
 	return NULL;
 }

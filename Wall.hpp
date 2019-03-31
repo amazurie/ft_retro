@@ -25,7 +25,7 @@ class Wall : public AEntity
 		bool checkBox(float startX, float startY, float endX, float endY) const;
 		bool checkOOW() const;
 		int		bulletNum() const;
-		AEntity	*getBullets(int &) const;
+		AEntity	*getBullets(int &);
 
 		Wall &	operator=( Wall const & rhs );
 };

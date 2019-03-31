@@ -38,7 +38,7 @@ class AEntity
 		virtual bool checkBox(float, float, float, float) const = 0;
 		virtual bool checkOOW() const = 0;
 		virtual	int  bulletNum() const = 0;
-		virtual AEntity *getBullets(int &) const = 0;
+		virtual AEntity *getBullets(int &);
 
         FakeVec		*getVec(void) const;
         EntType		getType() const;

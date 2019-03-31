@@ -211,9 +211,11 @@ void	EntityList::shootAll()
 	for (unsigned int i = 0; i < nb; i++)
 	{
 		j = _list[i]->bulletNum();
-		if (j && _nbEnts < _nbMaxEnts)
+		if (j)
 		{
-			addEnt(_list[i]->getBullets(j));
+			AEntity *e = _list[i]->getBullets(j);
+			if (e != NULL)
+				addEnt(e);
 		}
 	}
 }
