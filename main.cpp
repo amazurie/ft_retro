@@ -70,6 +70,12 @@ int		main(void)
 		{
 			while (1)
 			{
+				char c;
+				while ((c = getch()) != ERR)
+				{
+					if (c == 'q')
+						return 0;
+				}
 				move(WindowHelper::getY() / 2, WindowHelper::getX() / 2 - 4);
 				addstr("YOU LOSE!");
 			}
