@@ -46,7 +46,7 @@ void	AEntity::enableRender()
 
 void	AEntity::disableRender()
 {
-	_render = true;
+	_render = false;
 }
 
 bool	AEntity::isRendered() const

@@ -29,6 +29,9 @@ Player &	Player::operator=( Player const & rhs )
 
 void		Player::render(void)
 {
+	if (!(isRendered()))
+		return;
+	
 	int	x = getVec()->getX();
 	int	y = getVec()->getY();
 

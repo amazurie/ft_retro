@@ -169,7 +169,7 @@ bool	EntityList::checkCollide()
 			if (_list[i]->checkCollide(*(_list[j])))
 			{
 				_collideEvent(*(_list[i]), *(_list[j]));
-				if (0 == i)
+				if ((0 == i) && (STAR != _list[j]->getType()))
 					playerDied = true;
 			}			
 		}
