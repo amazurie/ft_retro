@@ -8,6 +8,7 @@
 class Enemy : public AEntity
 {
 	private:
+		int		_type;
 		int		_shootInt;
 		int		_direction;
 		

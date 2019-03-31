@@ -106,14 +106,33 @@ int		main(void)
 	}
 	while (1)
 	{
-		usleep(5000);
+		usleep(3000);
 		timeout(0);
 		entities.updateAll();
 		entities.checkOOW();
 		if (entities.checkCollide() || WindowHelper::getScore() > 2000000000)
 		{
-			while (1)
+			char c = 0;
+			while (c != 'r')
 			{
+				while ((c = getch()) != ERR)
+				{
+					if (c == 'q')
+						return 0;
+					if (c == 'r')
+					{
+						WindowHelper::setScore(0);
+						while (y--)
+						{
+								entities.addEnt(new Wall(new FakeVec(0, y), 1));
+								entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), y), 2));
+						}
+						//TODO entities.dellAll();
+						p = new Player(new FakeVec(WindowHelper::getX() / 2, WindowHelper::getY() - 20));
+						entities.addEnt(p);
+						break;
+					}
+				}
 				move(WindowHelper::getY() / 2 - 1, WindowHelper::getX() / 2 - 4);
 				addstr("YOU LOSE!");
 				if (WindowHelper::getScore() > 2000000000)
@@ -122,12 +141,6 @@ int		main(void)
 					addstr("CHEATER! I think... (maybe... hehehe)");
 				}
 				refresh();
-				char c;
-				while ((c = getch()) != ERR)
-				{
-					if (c == 'q')
-						return 0;
-				}
 			}
 		}
 		entities.resize(WindowHelper::getY(), WindowHelper::getX());
@@ -135,8 +148,8 @@ int		main(void)
 		count++;
 		if (count > 300)
 		{
-			entities.addEnt(new Enemy(new FakeVec((rand() % (WindowHelper::getX() / 2) + (WindowHelper::getX() / 4)), 0)));
-			count = 0;
+			entities.addEnt(new Enemy(new FakeVec((rand() % (WindowHelper::getX() - 30) + 15), 0)));
+			count = rand() % 100;
 		}
 		if (count % 10 == 0 && WindowHelper::getX() > 100)
 		{
@@ -144,7 +157,7 @@ int		main(void)
 			entities.addEnt(new Wall(new FakeVec(0, 0), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), 0), 2));
 		}
-		clear();
+		erase();
 		entities.renderAll();
 		infoBoard();
 		refresh();
