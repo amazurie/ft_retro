@@ -103,7 +103,7 @@ bool	EntityList::addEntsTab(unsigned int size, AEntity** ents)
 void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 {
 	// Player & All
-	if (PLAYER == ent1.getType()) // Player can't be ent2 because checked first
+	if ((PLAYER == ent1.getType()) && (STAR != ent2.getType())) // Player can't be ent2 because checked first
 	{
 		delEnt(&ent1);
 	}
