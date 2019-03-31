@@ -59,11 +59,6 @@ void		Player::update(void)
 
 bool	Player::checkCollide(AEntity &ent)
 {
-	if ((WALL != ent.getType()) && (ENEMY != ent.getType()))
-	{
-		// debug ?
-	}
-
 	if (ent.checkBox(getVec()->getX() - 3, getVec()->getY() - 2,
 				getVec()->getX() + 3, getVec()->getY() + 1))
 		return (true);
@@ -109,9 +104,9 @@ AEntity *Player::getBullets(int & i) const
 	if (i == 2)
 	{
 		i--;
-		return (new Bullet(new FakeVec(getVec()->getX() - 3, getVec()->getY() - 3)));
+		return (new Bullet(new FakeVec(getVec()->getX() - 3, getVec()->getY() - 3), true));
 	}
 	else if (i-- == 1)
-		return (new Bullet(new FakeVec(getVec()->getX() + 3, getVec()->getY() - 3)));
+		return (new Bullet(new FakeVec(getVec()->getX() + 3, getVec()->getY() - 3), true));
 	return NULL;
 }

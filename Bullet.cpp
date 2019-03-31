@@ -5,8 +5,8 @@ Bullet::Bullet( void )
 	return;
 }
 
-Bullet::Bullet( FakeVec *vec ) :
-	AEntity(BULLET, vec)
+Bullet::Bullet(FakeVec *vec, bool const fromPlayer) :
+	AEntity(fromPlayer ? BULLET_PLAYER : BULLET_ENEMY, vec)
 {
 	return;
 }

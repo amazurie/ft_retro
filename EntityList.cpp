@@ -103,24 +103,29 @@ bool	EntityList::addEntsTab(unsigned int size, AEntity** ents)
 void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 {
 	// Player & All
-	if ((PLAYER == ent1.getType()) && (STAR != ent2.getType()) && (BULLET != ent2.getType())) // Player can't be ent2 because checked first
+	if ((PLAYER == ent1.getType()) && (STAR != ent2.getType())
+	&& (BULLET_PLAYER != ent2.getType())) // Player can't be ent2 because checked first
 	{
 		delEnt(&ent1);
 	}
 
 	// Wall & Bullets
-	else if ((WALL == ent1.getType()) && (BULLET == ent2.getType()))
+	else if ((WALL == ent1.getType())
+		&& ((BULLET_PLAYER == ent2.getType()) || (BULLET_ENEMY == ent2.getType())))
 	{
 		delEnt(&ent2);
 	}
-	else if ((BULLET == ent1.getType()) && (WALL == ent2.getType()))
+	else if (((BULLET_PLAYER == ent1.getType()) || (BULLET_ENEMY == ent1.getType())) 
+		&& (WALL == ent2.getType()))
 	{
 		delEnt(&ent1);
 	}
 
-	// Enemy & Bullets
-	if (((BULLET == ent1.getType()) && (ENEMY == ent2.getType()))
-		|| ((ENEMY == ent1.getType()) && (ENEMY == ent2.getType())))
+	// Enemy & Bullets, Bullets & Bullets
+	else if (((BULLET_PLAYER == ent1.getType()) && (ENEMY == ent2.getType()))
+		|| ((ENEMY == ent1.getType()) && (BULLET_PLAYER == ent2.getType()))
+		|| ((BULLET_PLAYER == ent1.getType()) && (BULLET_ENEMY == ent2.getType()))
+		|| ((BULLET_ENEMY == ent1.getType()) && (BULLET_PLAYER == ent2.getType())))
 	{
 		WindowHelper::addScore(100);
 		delEnt(&ent1);
@@ -128,7 +133,7 @@ void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 	}
 
 	//Stars
-	if (STAR == ent1.getType())
+	else if (STAR == ent1.getType())
 	{
 		ent1.disableRender();
 	}
@@ -170,7 +175,7 @@ bool	EntityList::checkCollide()
 			if (_list[i]->checkCollide(*(_list[j])))
 			{
 				_collideEvent(*(_list[i]), *(_list[j]));
-				if ((0 == i) && (STAR != _list[j]->getType()) && (BULLET != _list[j]->getType()))
+				if ((0 == i) && (STAR != _list[j]->getType()) && (BULLET_PLAYER != _list[j]->getType()))
 					playerDied = true;
 			}			
 		}

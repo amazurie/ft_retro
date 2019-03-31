@@ -10,7 +10,8 @@ typedef enum Type
 {
 	PLAYER,
 	ENEMY,
-	BULLET,
+	BULLET_PLAYER,
+	BULLET_ENEMY,
 	WALL,
 	STAR
 } EntType;

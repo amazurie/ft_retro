@@ -67,12 +67,7 @@ void	Enemy::render()
 
 bool	Enemy::checkCollide(AEntity &ent)
 {
-	if (BULLET != ent.getType())
-	{
-		// debug?
-	}
-
-	else if (ent.checkBox(getVec()->getX() - 2, getVec()->getY() - 2,
+	if (ent.checkBox(getVec()->getX() - 2, getVec()->getY() - 2,
 				getVec()->getX() + 3, getVec()->getY()))
 	{
 		return (true);
