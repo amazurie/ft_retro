@@ -5,12 +5,12 @@ Star::Star( void )
 	return;
 }
 
-Star::Star( FakeVec *vec ) : AEntity(STAR, vec), _render(true)
+Star::Star( FakeVec *vec ) : AEntity(STAR, vec)
 {
 	return;
 }
 
-Star::Star( Star const & src ) : AEntity(src.getType(), src.getVec()), _render(true)
+Star::Star( Star const & src ) : AEntity(src.getType(), src.getVec())
 {
 	return;
 }
@@ -28,13 +28,16 @@ Star &	Star::operator=( Star const & rhs )
 
 void		Star::render(void)
 {
+	if (!(isRendered()))
+		return;
+
 	move(getVec()->getY(), getVec()->getX());
 	addstr("*");
 }
 
 void		Star::update(void)
 {
-	getVec()->setY(getVec()->getY() + 0.2);
+	getVec()->setY(getVec()->getY() + 0.01);
 }
 
 bool	Star::checkCollide(AEntity &ent) const

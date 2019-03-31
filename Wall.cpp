@@ -32,6 +32,9 @@ Wall &	Wall::operator=( Wall const & rhs )
 
 void		Wall::render(void)
 {
+	if (!(isRendered()))
+		return;
+
 	int i;
 
 	if (_pos == 1)

@@ -29,6 +29,8 @@ Bullet &	Bullet::operator=( Bullet const & rhs )
 
 void	Bullet::render()
 {
+	if (!(isRendered()))
+		return;
 }
 
 void	Bullet::update()

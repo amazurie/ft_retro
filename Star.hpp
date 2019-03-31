@@ -8,7 +8,6 @@ class Star : public AEntity
 {
 	private:
 		Star( void );
-		bool	_render;
 
 	public:
 		Star( FakeVec *_vec );

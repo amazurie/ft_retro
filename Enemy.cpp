@@ -35,6 +35,9 @@ void	Enemy::update()
 
 void	Enemy::render()
 {
+	if (!(isRendered()))
+		return;
+
 	int	x = getVec()->getX();
 	int	y = getVec()->getY();
 
