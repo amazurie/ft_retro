@@ -63,12 +63,7 @@ void		Wall::update(void)
 
 bool	Wall::checkCollide(AEntity &ent) const
 {
-	if (BULLET != ent.getType())
-	{
-		// debug ?
-	}
-
-	else if ((_pos == 1 && ent.checkBox(getVec()->getX(),
+	if ((_pos == 1 && ent.checkBox(getVec()->getX(),
 				getVec()->getY(), getVec()->getX() + _size, getVec()->getY()))
 			|| (_pos == 2 && ent.checkBox(getVec()->getX() - _size,
 				getVec()->getY(), getVec()->getX(), getVec()->getY())))

@@ -10,7 +10,8 @@ typedef enum Type
 {
 	PLAYER,
 	ENEMY,
-	BULLET,
+	BULLET_PLAYER,
+	BULLET_ENEMY,
 	WALL,
 	STAR
 } EntType;
@@ -38,7 +39,7 @@ class AEntity
 		virtual bool checkBox(float, float, float, float) const = 0;
 		virtual bool checkOOW() const = 0;
 		virtual	int  bulletNum() const = 0;
-		virtual AEntity *getBullets(int &);
+		virtual AEntity *getBullets(int &) = 0;
 
         FakeVec		*getVec(void) const;
         EntType		getType() const;

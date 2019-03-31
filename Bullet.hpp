@@ -11,7 +11,7 @@ class Bullet : public AEntity
 		Bullet( void );
 
 	public:
-		Bullet( FakeVec *_vec );
+		Bullet( FakeVec *_vec, bool const fromPlayer );
 		Bullet( Bullet const & src );
 		~Bullet( void );
 
