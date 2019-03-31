@@ -37,7 +37,7 @@ void		Star::render(void)
 
 void		Star::update(void)
 {
-	getVec()->setY(getVec()->getY() + 0.01);
+	getVec()->setY(getVec()->getY() + 0.2);
 }
 
 bool	Star::checkCollide(AEntity &ent) const
