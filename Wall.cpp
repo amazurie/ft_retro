@@ -100,7 +100,7 @@ bool	Wall::checkBox(float startX, float startY, float endX, float endY) const
 		return false;
 	if (_pos == 1 && startX > getVec()->getX() + _size)
 		return false;
-	if (_pos != 1 && endX < getVec()->getX() - _size)
+	if (endX < getVec()->getX() - _size)
 		return false;
 	return true;
 }

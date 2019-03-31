@@ -6,7 +6,7 @@ Player::Player( void )
 }
 
 Player::Player( FakeVec *vec ) :
-	AEntity(PLAYER, vec), _shootInt(3)
+	AEntity(PLAYER, vec), _shootInt(30)
 {
 	return;
 }
@@ -92,7 +92,7 @@ int		Player::bulletNum()
 {
 	if (!_shootInt)
 	{
-		_shootInt = 3;
+		_shootInt = 30;
 		return 2;
 	}
 	_shootInt--;
