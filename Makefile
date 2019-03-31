@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mbourget <mbourget@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/25 09:44:22 by amazurie          #+#    #+#              #
-#    Updated: 2019/03/30 19:47:32 by amazurie         ###   ########.fr        #
+#    Updated: 2019/03/31 10:32:12 by mbourget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC	= main.cpp \
 	  EntityList.cpp \
 	  Enemy.cpp \
 	  Bullet.cpp \
-	  Wall.cpp
+	  Wall.cpp \
+	  Star.cpp
 
 OBJS	= $(SRC:.cpp=.o)
 DEPS	= $(OSRC:.o=.d)

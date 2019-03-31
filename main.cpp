@@ -8,6 +8,7 @@
 #include "FakeVec.hpp"
 #include "EntityList.hpp"
 #include "Enemy.hpp"
+#include "Star.hpp"
 
 void	check_input(Player *p)
 {
@@ -70,6 +71,7 @@ int		main(void)
 		}
 		if (count % 10 == 0 && WindowHelper::getX() > 100)
 		{
+			entities.addEnt(new Star(new FakeVec((rand() % WindowHelper::getX()), 0)));
 			entities.addEnt(new Wall(new FakeVec(0, 0), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), 0), 2));
 		}
