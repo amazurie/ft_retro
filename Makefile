@@ -6,7 +6,7 @@
 #    By: mbourget <mbourget@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/25 09:44:22 by amazurie          #+#    #+#              #
-#    Updated: 2019/03/31 15:55:00 by amazurie         ###   ########.fr        #
+#    Updated: 2019/03/31 19:37:53 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC	= main.cpp \
 	  Enemy.cpp \
 	  Bullet.cpp \
 	  Wall.cpp \
+	  Boss.cpp \
 	  Star.cpp
 
 OBJS	= $(SRC:.cpp=.o)

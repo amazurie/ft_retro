@@ -19,7 +19,7 @@ class Star : public AEntity
 	
 		bool checkCollide(AEntity &ent);
 		bool checkOOW() const;
-		bool checkBox(float, float, float, float) const;
+		bool checkBox(float, float, float, float);
 		void resize(int, int);
 		int		bulletNum();
 		AEntity	*getBullets(int &) const;

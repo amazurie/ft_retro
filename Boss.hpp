@@ -1,28 +1,30 @@
-#ifndef ENEMY_HPP
-# define ENEMY_HPP
+#ifndef BOSS_HPP
+# define BOSS_HPP
 
 # include "AEntity.hpp"
 # include "FakeVec.hpp"
 # include "Bullet.hpp"
 
-class Enemy : public AEntity
+class Boss : public AEntity
 {
 	private:
-		int		_type;
-		int		_shootInt;
-		int		_direction;
+		static int		_life;
+		int		_shootInt1;
+		int		_shootInt2;
 		
-		Enemy(void);
+		Boss(void);
 
 	public:
-		Enemy(FakeVec *vec);
-		Enemy(Enemy const & obj);
-		~Enemy(void);
+		Boss(FakeVec *vec);
+		Boss(Boss const & obj);
+		~Boss(void);
 
-		Enemy& operator=(Enemy const &rhs);
+		Boss& operator=(Boss const &rhs);
 
 		void update(void);
 		void render(void);
+		static int  getLife(void);
+		static void setLife(int);
 
 		void resize(int y, int x);
 		bool checkCollide(AEntity &ent);
@@ -32,4 +34,4 @@ class Enemy : public AEntity
 		AEntity	*getBullets(int &) const;
 };
 
-#endif // ENEMY_HPP
+#endif // BOSS_HPP

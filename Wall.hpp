@@ -22,7 +22,7 @@ class Wall : public AEntity
 		void resize(int y, int x);
 
 		bool checkCollide(AEntity &ent);
-		bool checkBox(float startX, float startY, float endX, float endY) const;
+		bool checkBox(float startX, float startY, float endX, float endY);
 		bool checkOOW() const;
 		int		bulletNum();
 		AEntity	*getBullets(int &) const;

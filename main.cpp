@@ -9,6 +9,7 @@
 #include "EntityList.hpp"
 #include "Enemy.hpp"
 #include "Star.hpp"
+#include "Boss.hpp"
 
 void	check_input(Player *p)
 {
@@ -104,6 +105,7 @@ int		main(void)
 			entities.addEnt(new Wall(new FakeVec(0, y), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), y), 2));
 	}
+	entities.addEnt(new Boss(new FakeVec(WindowHelper::getX() / 2, 0)));
 	while (1)
 	{
 		usleep(3000);

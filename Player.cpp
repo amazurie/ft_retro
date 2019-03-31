@@ -75,7 +75,7 @@ void	Player::resize(int, int)
 {
 }
 
-bool	Player::checkBox(float startX, float startY, float endX, float endY) const
+bool	Player::checkBox(float startX, float startY, float endX, float endY)
 {
 	if (startY > getVec()->getY())
 		return false;

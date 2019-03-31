@@ -83,7 +83,7 @@ void	Bullet::resize(int, int)
 {
 }
 
-bool	Bullet::checkBox(float startX, float startY, float endX, float endY) const
+bool	Bullet::checkBox(float startX, float startY, float endX, float endY)
 {
 	int x = getVec()->getX();
 	int y = getVec()->getY();

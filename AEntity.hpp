@@ -8,12 +8,13 @@
 
 typedef enum Type
 {
+	WALL,
+	STAR,
+	BULLET_ENEMY,
+	BULLET_PLAYER,
 	PLAYER,
 	ENEMY,
-	BULLET_PLAYER,
-	BULLET_ENEMY,
-	WALL,
-	STAR
+	BOSS
 } EntType;
 
 class AEntity
@@ -36,7 +37,7 @@ class AEntity
 		virtual void resize(int y, int x) = 0;
 
 		virtual bool checkCollide(AEntity &ent) = 0;
-		virtual bool checkBox(float, float, float, float) const = 0;
+		virtual bool checkBox(float, float, float, float) = 0;
 		virtual bool checkOOW() const = 0;
 		virtual	int  bulletNum() = 0;
 		virtual AEntity *getBullets(int &) const = 0;

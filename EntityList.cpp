@@ -1,5 +1,6 @@
 #include <iostream>
 #include "EntityList.hpp"
+#include "Boss.hpp"
 
 EntityList::EntityList(unsigned int size) :
 	_nbMaxEnts(size), _nbEnts(0), _list(new AEntity *[_nbMaxEnts])
@@ -138,6 +139,15 @@ void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 	else if (STAR == ent2.getType())
 	{
 		ent2.disableRender();
+	}
+
+	else if (((BULLET_PLAYER == ent1.getType()) && (BOSS == ent2.getType()))
+			|| ((BOSS == ent1.getType()) && (BULLET_PLAYER == ent2.getType())))
+	{
+		if (Boss::getLife())
+			Boss::setLife(Boss::getLife() - 1);
+		else
+			delEnt(&ent2);
 	}
 }
 
