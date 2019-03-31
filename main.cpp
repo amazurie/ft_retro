@@ -105,10 +105,9 @@ int		main(void)
 			entities.addEnt(new Wall(new FakeVec(0, y), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), y), 2));
 	}
-	entities.addEnt(new Boss(new FakeVec(WindowHelper::getX() / 2, 0)));
 	while (1)
 	{
-		usleep(3000);
+		usleep(5000);
 		timeout(0);
 		entities.updateAll();
 		entities.checkOOW();
@@ -148,10 +147,12 @@ int		main(void)
 		entities.resize(WindowHelper::getY(), WindowHelper::getX());
 		check_input(p);
 		count++;
-		if (count > 300)
+		if (count % 20000 == 0)
+			entities.addEnt(new Boss(new FakeVec(WindowHelper::getX() / 2, 0)));
+		if (count % 300 == 0)
 		{
 			entities.addEnt(new Enemy(new FakeVec((rand() % (WindowHelper::getX() - 30) + 15), 0)));
-			count = rand() % 100;
+			count += rand() % 100;
 		}
 		if (count % 10 == 0 && WindowHelper::getX() > 100)
 		{
