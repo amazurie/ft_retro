@@ -42,12 +42,11 @@ WindowHelper::WindowHelper(void)
     init_pair(1, COLOR_CYAN, COLOR_BLACK);
 	init_color(COLOR_YELLOW, 700, 600, 0);
     init_pair(2, COLOR_WHITE, COLOR_YELLOW);
-	init_color(COLOR_RED, 1000, 600, 300);
+	init_color(COLOR_RED, 1000, 400, 400);
     init_pair(3, COLOR_RED, COLOR_BLACK);
 	init_color(COLOR_BLUE, 150, 300, 600);
     init_pair(4, COLOR_BLUE, COLOR_BLACK);
-	init_color(COLOR_WHITE, 500, 500, 500);
-    init_pair(5, COLOR_RED, COLOR_WHITE);
+    init_pair(5, COLOR_GREEN, COLOR_BLACK);
     return ;
 }
 

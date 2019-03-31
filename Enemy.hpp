@@ -3,10 +3,12 @@
 
 # include "AEntity.hpp"
 # include "FakeVec.hpp"
+# include "Bullet.hpp"
 
 class Enemy : public AEntity
 {
 	private:
+		int		_shootInt;
 		int		_direction;
 		
 		Enemy(void);

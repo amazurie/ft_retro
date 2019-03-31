@@ -7,11 +7,12 @@
 class Bullet : public AEntity
 {
 	private:
+		int	_dir;
 
 		Bullet( void );
 
 	public:
-		Bullet( FakeVec *_vec, bool const fromPlayer );
+		Bullet( FakeVec *_vec, bool const fromPlayer, char dir );
 		Bullet( Bullet const & src );
 		~Bullet( void );
 

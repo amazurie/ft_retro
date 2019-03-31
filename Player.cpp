@@ -104,9 +104,9 @@ AEntity *Player::getBullets(int & i) const
 	if (i == 2)
 	{
 		i--;
-		return (new Bullet(new FakeVec(getVec()->getX() - 3, getVec()->getY() - 3), true));
+		return (new Bullet(new FakeVec(getVec()->getX() - 3, getVec()->getY() - 3), true, 'h'));
 	}
 	else if (i-- == 1)
-		return (new Bullet(new FakeVec(getVec()->getX() + 3, getVec()->getY() - 3), true));
+		return (new Bullet(new FakeVec(getVec()->getX() + 3, getVec()->getY() - 3), true, 'h'));
 	return NULL;
 }

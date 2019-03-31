@@ -14,14 +14,17 @@ void	check_input(Player *p)
 {
 	char	c;
 
-	if (WindowHelper::getPause() || WindowHelper::getX() < 50
+	if (WindowHelper::getPause())
+	{
+		p->getVec()->setY(WindowHelper::getY() - 20);
+		p->getVec()->setX(WindowHelper::getX() / 2);
+	}
+	if (WindowHelper::getX() < 50
 			|| WindowHelper::getY() < 50)
 	{
 		clear();
 		move(0, 0);
 		addstr("window too little");
-		p->getVec()->setY(WindowHelper::getY() - 20);
-		p->getVec()->setX(WindowHelper::getX() / 2);
 		refresh();
 	}
 	while (WindowHelper::getPause() || WindowHelper::getX() < 50
@@ -62,7 +65,7 @@ void	infoBoard()
 	i = 1;
 	while (j /= 10)
 		i *= 10;
-	attron(COLOR_PAIR(5));
+	attron(COLOR_PAIR(3));
 	move(1, 1);
 	addstr(" Lives : ");
 	addstr(">:) ");
@@ -109,14 +112,15 @@ int		main(void)
 		{
 			while (1)
 			{
+				move(WindowHelper::getY() / 2, WindowHelper::getX() / 2 - 4);
+				addstr("YOU LOSE!");
+				refresh();
 				char c;
 				while ((c = getch()) != ERR)
 				{
 					if (c == 'q')
 						return 0;
 				}
-				move(WindowHelper::getY() / 2, WindowHelper::getX() / 2 - 4);
-				addstr("YOU LOSE!");
 			}
 		}
 		entities.resize(WindowHelper::getY(), WindowHelper::getX());
@@ -129,7 +133,7 @@ int		main(void)
 		}
 		if (count % 10 == 0 && WindowHelper::getX() > 100)
 		{
-			entities.addEnt(new Star(new FakeVec((rand() % WindowHelper::getX()), 0)));
+			entities.addEnt(new Star(new FakeVec((rand() % (WindowHelper::getX() - 20)) + 10, 0)));
 			entities.addEnt(new Wall(new FakeVec(0, 0), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), 0), 2));
 		}

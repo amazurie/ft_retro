@@ -6,12 +6,12 @@ Enemy::Enemy(void) : AEntity()
 }
 
 Enemy::Enemy(FakeVec *vec) : AEntity( ENEMY, vec ),
-	 _direction(rand() % 2 == 1 ? 1 : 0)
+	_shootInt(200), _direction(rand() % 2 == 1 ? 1 : 0)
 {
 }
 
 Enemy::Enemy(Enemy const & src) :
-	AEntity(src.getType(), src.getVec()), _direction(src._direction)
+	AEntity(src.getType(), src.getVec()), _shootInt(src._shootInt), _direction(src._direction)
 {
 }
 
@@ -23,6 +23,7 @@ Enemy& Enemy::operator=(Enemy const &rhs)
 {
 	AEntity::operator=(rhs);
 	_direction = rhs._direction;
+	_shootInt = rhs._shootInt;
 	return *this;
 }
 
@@ -105,10 +106,29 @@ bool	Enemy::checkBox(float startX, float startY, float endX, float endY) const
 
 int		Enemy::bulletNum()
 {
+	if (_shootInt == 0)
+	{
+		_shootInt = 200;
+		return 3;
+	}
+	_shootInt--;
 	return 0;
 }
 
-AEntity	*Enemy::getBullets(int &) const
+AEntity	*Enemy::getBullets(int & i) const
 {
+	if (i == 3)
+	{
+		i--;
+		return new Bullet(new FakeVec(getVec()->getX() - 3, getVec()->getY() + 1), false, 'l');
+	}
+	if (i == 2)
+	{
+		i--;
+		return new Bullet(new FakeVec(getVec()->getX() + 3, getVec()->getY() + 1), false, 'r');
+		return NULL;
+	}
+	if (i-- == 1)
+		return new Bullet(new FakeVec(getVec()->getX(), getVec()->getY() + 1), false, 'd');
 	return NULL;
 }
