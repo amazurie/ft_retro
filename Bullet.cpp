@@ -74,3 +74,13 @@ bool	Bullet::checkBox(float startX, float startY, float endX, float endY) const
 		return true;
 	return false;
 }
+
+int		Bullet::bulletNum() const
+{
+	return 0;
+}
+
+AEntity	**Bullet::getBullets() const
+{
+	return NULL;
+}

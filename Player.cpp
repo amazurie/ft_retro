@@ -61,9 +61,7 @@ bool	Player::checkCollide(AEntity &ent) const
 
 	if (ent.checkBox(getVec()->getX() - 3, getVec()->getY() - 2,
 				getVec()->getX() + 3, getVec()->getY() + 1))
-	{
 		return (true);
-	}
 
 	return (false);
 }
@@ -88,4 +86,14 @@ bool	Player::checkBox(float startX, float startY, float endX, float endY) const
 	else if (endY < getVec()->getY() - 2)
 		return false;
 	return true;
+}
+
+int		Player::bulletNum() const
+{
+	return 0;
+}
+
+AEntity	**Player::getBullets() const
+{
+	return NULL;
 }

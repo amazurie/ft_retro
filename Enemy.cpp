@@ -99,3 +99,13 @@ bool	Enemy::checkBox(float startX, float startY, float endX, float endY) const
 		return false;
 	return true;
 }
+
+int		Enemy::bulletNum() const
+{
+	return 0;
+}
+
+AEntity	**Enemy::getBullets() const
+{
+	return NULL;
+}

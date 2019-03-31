@@ -39,11 +39,9 @@ void		Star::update(void)
 
 bool	Star::checkCollide(AEntity &ent) const
 {
-	if ((getVec()->getX() == ent.getVec()->getX())
-		|| (getVec()->getY() == ent.getVec()->getY()))
-	{
+	if (ent.checkBox(getVec()->getX(), getVec()->getY(),
+				getVec()->getX(), getVec()->getY()))
 		return (true);
-	}
 
 	return (false);
 }
@@ -60,11 +58,25 @@ bool	Star::checkOOW() const
 
 bool	Star::checkBox(float startX, float startY, float endX, float endY) const
 {
-	(void)startX;(void)startY;(void)endX;(void)endY;
+	int	x = getVec()->getX();
+	int y = getVec()->getY();
+
+	if ((startX <= x && startY <= y && endX >= x && endY >= y))
+		return true;
 	return (false);
 }
 
 void	Star::resize(int, int)
 {
 
+}
+
+int		Star::bulletNum() const
+{
+	return 0;
+}
+
+AEntity	**Star::getBullets() const
+{
+	return NULL;
 }

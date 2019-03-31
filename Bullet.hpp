@@ -22,6 +22,8 @@ class Bullet : public AEntity
 		bool	checkCollide(AEntity &ent) const;
 		bool	checkBox(float startX, float startY, float endX, float endY) const;
 		bool 	checkOOW() const;
+		int		bulletNum() const;
+		AEntity	**getBullets() const;
 
 		Bullet &	operator=( Bullet const & rhs );
 };
