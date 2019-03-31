@@ -103,7 +103,7 @@ bool	EntityList::addEntsTab(unsigned int size, AEntity** ents)
 void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 {
 	// Player & All
-	if ((PLAYER == ent1.getType()) && (STAR != ent2.getType())) // Player can't be ent2 because checked first
+	if ((PLAYER == ent1.getType()) && (STAR != ent2.getType()) && (BULLET != ent2.getType())) // Player can't be ent2 because checked first
 	{
 		delEnt(&ent1);
 	}
@@ -169,7 +169,7 @@ bool	EntityList::checkCollide()
 			if (_list[i]->checkCollide(*(_list[j])))
 			{
 				_collideEvent(*(_list[i]), *(_list[j]));
-				if ((0 == i) && (STAR != _list[j]->getType()))
+				if ((0 == i) && (STAR != _list[j]->getType()) && (BULLET != _list[j]->getType()))
 					playerDied = true;
 			}			
 		}
