@@ -1,10 +1,5 @@
 #include "Player.hpp"
 
-Player::Player( void )
-{
-	return;
-}
-
 Player::Player( FakeVec *vec ) :
 	AEntity(PLAYER, vec), _shootInt(30)
 {

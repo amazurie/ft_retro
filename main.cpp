@@ -139,7 +139,7 @@ int		main(void)
 			entities.addEnt(new Wall(new FakeVec(0, 0), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), 0), 2));
 		}
-		clear();
+		erase();
 		entities.renderAll();
 		infoBoard();
 		refresh();

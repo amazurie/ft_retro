@@ -21,8 +21,7 @@ EntityList		&EntityList::operator=(EntityList const &rhs)
 
 EntityList::~EntityList()
 {
-	for (unsigned int i = 0; i < _nbEnts; ++i)
-		delete _list[i];
+	delAllEnts();
 	delete [] _list;
 }
 
@@ -30,6 +29,7 @@ bool			EntityList::addEnt(AEntity *ent)
 {
 	if ((NULL == ent) || (_nbEnts == _nbMaxEnts) || (0 == _nbMaxEnts))
 		return (false);
+
 	_list[_nbEnts] = ent;
 	_nbEnts += 1;
 	return (true);
@@ -60,7 +60,7 @@ unsigned int	EntityList::_findEnt(AEntity *ent, bool & found) const
 	return (i);
 }
 
-bool		EntityList::delEnt(AEntity *ent)
+bool		EntityList::delEnt(AEntity *ent, unsigned int idx)
 {
 	if ((NULL == ent) || (0 == _nbEnts) || (0 == _nbMaxEnts))
 		return (false);
@@ -72,15 +72,12 @@ bool		EntityList::delEnt(AEntity *ent)
 	}
 	else
 	{
-		bool found = false;
-		unsigned int idx = _findEnt(ent, found);
-		if (!(found))
-			return (false);
 		AEntity *tmp = _list[idx];
 		_list[idx] = _list[(_nbEnts - 1)];
 		_list[(_nbEnts - 1)] = NULL;
 		delete tmp;
 	}
+
 	_nbEnts -= 1;
 	return (true);
 }
@@ -100,25 +97,25 @@ bool	EntityList::addEntsTab(unsigned int size, AEntity** ents)
 	return (true);
 }
 
-void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
+void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2, unsigned int i1, unsigned int i2)
 {
 	// Player & All
 	if ((PLAYER == ent1.getType()) && (STAR != ent2.getType())
 	&& (BULLET_PLAYER != ent2.getType())) // Player can't be ent2 because checked first
 	{
-		delEnt(&ent1);
+		delEnt(&ent1, i1);
 	}
 
 	// Wall & Bullets
 	else if ((WALL == ent1.getType())
 		&& ((BULLET_PLAYER == ent2.getType()) || (BULLET_ENEMY == ent2.getType())))
 	{
-		delEnt(&ent2);
+		delEnt(&ent2, i2);
 	}
 	else if (((BULLET_PLAYER == ent1.getType()) || (BULLET_ENEMY == ent1.getType())) 
 		&& (WALL == ent2.getType()))
 	{
-		delEnt(&ent1);
+		delEnt(&ent1, i1);
 	}
 
 	// Enemy & Bullets, Bullets & Bullets
@@ -126,8 +123,8 @@ void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 		|| ((ENEMY == ent1.getType()) && (BULLET_PLAYER == ent2.getType())))
 	{
 		WindowHelper::addScore(100);
-		delEnt(&ent1);
-		delEnt(&ent2);
+		delEnt(&ent1, i1);
+		delEnt(&ent2, i2);
 	}
 
 	//Stars
@@ -151,11 +148,16 @@ void	EntityList::checkOOW()
 			continue;
 		else if (_list[i]->checkOOW())
 		{
-			delEnt(_list[i]);
+			delEnt(_list[i], i);
 		}
 	}
 }
 
+void	EntityList::delAllEnts()
+{
+	for (unsigned int i = 0; i < _nbEnts; i++)
+		delete _list[i];
+}
 
 // Player can collide with: Horizontal Walls, Enemies
 // Enemies can collide with: Player, Bullets
@@ -172,7 +174,7 @@ bool	EntityList::checkCollide()
 		{
 			if (_list[i]->checkCollide(*(_list[j])))
 			{
-				_collideEvent(*(_list[i]), *(_list[j]));
+				_collideEvent(*(_list[i]), *(_list[j]), i, j);
 				if ((0 == i) && (STAR != _list[j]->getType()) && (BULLET_PLAYER != _list[j]->getType()))
 					playerDied = true;
 			}			
@@ -206,7 +208,6 @@ void	EntityList::resize(int y, int x)
 		_list[i]->resize(y, x);
 }
 
-#include "Bullet.hpp"
 void	EntityList::shootAll()
 {
 	unsigned int	nb = _nbEnts;

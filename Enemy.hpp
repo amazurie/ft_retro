@@ -10,7 +10,7 @@ class Enemy : public AEntity
 	private:
 		int		_shootInt;
 		int		_direction;
-		
+
 		Enemy(void);
 
 	public:

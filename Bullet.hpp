@@ -8,7 +8,6 @@ class Bullet : public AEntity
 {
 	private:
 		int	_dir;
-
 		Bullet( void );
 
 	public:

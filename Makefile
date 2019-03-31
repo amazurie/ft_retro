@@ -6,13 +6,13 @@
 #    By: mbourget <mbourget@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/25 09:44:22 by amazurie          #+#    #+#              #
-#    Updated: 2019/03/31 15:55:00 by amazurie         ###   ########.fr        #
+#    Updated: 2019/03/31 19:05:57 by mbourget         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= ft_retro
 CC	= clang++
-FLAGS	= -Wall -Wextra -Werror -lncurses
+FLAGS	= -Wall -Wextra -Werror -lncurses -std=c++98
 
 SRC	= main.cpp \
 	  AEntity.cpp \

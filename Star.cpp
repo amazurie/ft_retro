@@ -1,10 +1,5 @@
 #include "Star.hpp"
 
-Star::Star( void )
-{
-	return;
-}
-
 Star::Star( FakeVec *vec ) : AEntity(STAR, vec)
 {
 	return;
