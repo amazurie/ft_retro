@@ -104,16 +104,21 @@ int		main(void)
 	}
 	while (1)
 	{
-		usleep(3000);
+		usleep(5000);
 		timeout(0);
 		entities.updateAll();
 		entities.checkOOW();
-		if (entities.checkCollide())
+		if (entities.checkCollide() || WindowHelper::getScore() > 2000000000)
 		{
 			while (1)
 			{
-				move(WindowHelper::getY() / 2, WindowHelper::getX() / 2 - 4);
+				move(WindowHelper::getY() / 2 - 1, WindowHelper::getX() / 2 - 4);
 				addstr("YOU LOSE!");
+				if (WindowHelper::getScore() > 2000000000)
+				{
+					move(WindowHelper::getY() / 2, WindowHelper::getX() / 2 - 18);
+					addstr("CHEATER! I think... (maybe... hehehe)");
+				}
 				refresh();
 				char c;
 				while ((c = getch()) != ERR)

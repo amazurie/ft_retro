@@ -153,11 +153,6 @@ void	EntityList::checkOOW()
 			continue;
 		else if (_list[i]->checkOOW())
 		{
-			if (BULLET_ENEMY == _list[i]->getType())
-			{
-				std::fstream dbg("/dev/ttys002");
-				dbg << "deleting enemy bullet" << std::endl;
-			}
 			delEnt(_list[i]);
 		}
 	}
@@ -181,7 +176,7 @@ bool	EntityList::checkCollide()
 			{
 				_collideEvent(*(_list[i]), *(_list[j]));
 				if ((0 == i) && (STAR != _list[j]->getType()) && (BULLET_PLAYER != _list[j]->getType()))
-					;//playerDied = true;
+					playerDied = true;
 			}			
 		}
 	}
