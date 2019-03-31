@@ -181,6 +181,7 @@ void	EntityList::updateAll(void)
 {
 	for (unsigned int i = 0; i < _nbEnts; i++)
 		_list[i]->update();
+	shootAll();
 }
 
 void	EntityList::renderAll(void)
@@ -199,4 +200,20 @@ void	EntityList::resize(int y, int x)
 {
 	for (unsigned int i = 0; i < _nbEnts; i++)
 		_list[i]->resize(y, x);
+}
+
+#include "Bullet.hpp"
+void	EntityList::shootAll()
+{
+	unsigned int	nb = _nbEnts;
+	int	j;
+
+	for (unsigned int i = 0; i < nb; i++)
+	{
+		j = _list[i]->bulletNum();
+		if (j && _nbEnts < _nbMaxEnts)
+		{
+			addEnt(_list[i]->getBullets(j));
+		}
+	}
 }

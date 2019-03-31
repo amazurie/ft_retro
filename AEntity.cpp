@@ -4,11 +4,13 @@ AEntity::AEntity(void) : _vec(new FakeVec), _render(true)
 {
 }
 
-AEntity::AEntity(EntType type, FakeVec *vec) : _type(type), _vec(vec), _render(true)
+AEntity::AEntity(EntType type, FakeVec *vec) :
+	_type(type), _vec(vec), _render(true)
 {
 }
 
-AEntity::AEntity(AEntity const & src) : _type(src._type), _vec(src._vec), _render(src._render)
+AEntity::AEntity(AEntity const & src) :
+	_type(src._type), _vec(src._vec), _render(src._render)
 {
 }
 

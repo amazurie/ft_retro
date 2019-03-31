@@ -22,6 +22,7 @@ class EntityList
 		bool			checkCollide();
 		void			checkOOW();
 		void			resize(int y, int x);
+		void			shootAll(void);
 
 	private:
 		EntityList();

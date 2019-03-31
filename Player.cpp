@@ -96,14 +96,14 @@ int		Player::bulletNum() const
 	return 2;
 }
 
-AEntity	*Player::getBullets(int & i) const
+AEntity *Player::getBullets(int & i) const
 {
-	if (i == 1)
+	if (i == 2)
 	{
 		i--;
-		return new Bullet(new FakeVec(getVec()->getX() - 1, getVec()->getY() - 2));
+		return (new Bullet(new FakeVec(getVec()->getX() - 1, getVec()->getY() - 2)));
 	}
-	else if (i-- == 0)
-		return new Bullet(new FakeVec(getVec()->getX() + 1, getVec()->getY() - 2));
+	else if (i-- == 1)
+		return (new Bullet(new FakeVec(getVec()->getX() + 1, getVec()->getY() - 2)));
 	return NULL;
 }
