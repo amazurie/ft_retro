@@ -3,10 +3,6 @@
 
 int	Boss::_life = 0;
 
-Boss::Boss(void) : AEntity()
-{
-}
-
 Boss::Boss(FakeVec *vec) : AEntity( BOSS, vec ),
 	_shootInt1(300), _shootInt2(150)
 {

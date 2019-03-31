@@ -11,7 +11,7 @@ class Enemy : public AEntity
 		int		_type;
 		int		_shootInt;
 		int		_direction;
-		
+
 		Enemy(void);
 
 	public:

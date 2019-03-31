@@ -1,10 +1,5 @@
 #include "Bullet.hpp"
 
-Bullet::Bullet( void )
-{
-	return;
-}
-
 Bullet::Bullet(FakeVec *vec, bool const fromPlayer, char const dir) :
 	AEntity(fromPlayer ? BULLET_PLAYER : BULLET_ENEMY, vec), _dir(dir)
 {

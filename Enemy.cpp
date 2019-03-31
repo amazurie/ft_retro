@@ -1,10 +1,6 @@
 #include "Enemy.hpp"
 #include <cstdlib>
 
-Enemy::Enemy(void) : AEntity()
-{
-}
-
 Enemy::Enemy(FakeVec *vec) : AEntity( ENEMY, vec ),
 	_type(rand() % 2), _shootInt(50),
 	_direction(rand() % 2 == 1 ? 1 : 0)

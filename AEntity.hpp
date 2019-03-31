@@ -20,12 +20,14 @@ typedef enum Type
 class AEntity
 {
 	private:
-		EntType		_type;
-		FakeVec		*_vec;
-		bool		_render;
+		EntType			_type;
+		FakeVec			*_vec;
+		bool			_render;
+		unsigned int	_idx;
+
+		AEntity(void);
 
 	public:
-		AEntity(void);
 		AEntity(EntType type, FakeVec *_vec);
 		AEntity(AEntity const & obj);
 		virtual ~AEntity(void);

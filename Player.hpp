@@ -8,8 +8,7 @@ class Player : public AEntity
 {
 	private:
 		int	_shootInt;
-
-		Player( void );
+		Player(void);
 
 	public:
 		Player( FakeVec *_vec );

@@ -1,10 +1,5 @@
 #include "Wall.hpp"
 
-Wall::Wall( void )
-{
-	return;
-}
-
 Wall::Wall( FakeVec *vec, int pos ) :
 	AEntity(WALL, vec), _size(rand() % 5 + 5), _pos(pos)
 {
