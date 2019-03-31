@@ -29,12 +29,13 @@ Bullet &	Bullet::operator=( Bullet const & rhs )
 
 void	Bullet::render()
 {
-	if (!(isRendered()))
-		return;
+	move(getVec()->getY(), getVec()->getX());
+	addstr("|");
 }
 
 void	Bullet::update()
 {
+	getVec()->setX(getVec()->getX() - 1);
 }
 
 bool	Bullet::checkCollide(AEntity &ent) const
@@ -82,7 +83,7 @@ int		Bullet::bulletNum() const
 	return 0;
 }
 
-AEntity	**Bullet::getBullets() const
+AEntity	*Bullet::getBullets(int &) const
 {
 	return NULL;
 }

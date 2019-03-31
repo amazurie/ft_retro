@@ -14,12 +14,25 @@ void	check_input(Player *p)
 {
 	char	c;
 
-	while (WindowHelper::getPause())
+	if (WindowHelper::getPause() || WindowHelper::getX() < 50
+			|| WindowHelper::getY() < 50)
+	{
+		clear();
+		move(0, 0);
+		addstr("window too little");
+		p->getVec()->setY(WindowHelper::getY() - 20);
+		p->getVec()->setX(WindowHelper::getX() / 2);
+		refresh();
+	}
+	while (WindowHelper::getPause() || WindowHelper::getX() < 50
+			|| WindowHelper::getY() < 50)
 	{
 		c = getch();
 		if (c == 'p')
 		{
 			WindowHelper::setPause(false);
+			p->getVec()->setY(WindowHelper::getY() - 20);
+			p->getVec()->setX(WindowHelper::getX() / 2);
 			break;
 		}
 	}
@@ -49,7 +62,7 @@ int		main(void)
 
 	while (1)
 	{
-		usleep(3000);
+		usleep(30000);
 		timeout(0);
 		entities.updateAll();
 		entities.checkOOW();
