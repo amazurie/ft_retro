@@ -141,8 +141,6 @@ void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 	}
 }
 
-// Fonction add dans EntityList qui prend en param un tableau d'ent qui existent
-#include <fstream>
 void	EntityList::checkOOW()
 {
 	if ((0 == _nbEnts) || (0 == _nbMaxEnts))
