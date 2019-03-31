@@ -64,8 +64,8 @@ bool	Enemy::checkCollide(AEntity &ent) const
 		// debug?
 	}
 
-	else if ((getVec()->getX() == ent.getVec()->getX())
-		|| (getVec()->getY() == ent.getVec()->getY()))
+	else if (ent.checkBox(getVec()->getX() - 2, getVec()->getY() - 2,
+				getVec()->getX() + 3, getVec()->getY()))
 	{
 		return (true);
 	}
@@ -76,9 +76,18 @@ bool	Enemy::checkCollide(AEntity &ent) const
 bool	Enemy::checkOOW() const
 {
 	if (getVec()->getY() > WindowHelper::getY())
-	{
 		return (true);
-	}
+	else if (getVec()->getX() > WindowHelper::getX())
+		return (true);
 
 	return (false);
+}
+
+void	Enemy::resize(int, int)
+{
+}
+
+bool	Enemy::checkBox(float, float, float, float) const
+{
+	return false;
 }

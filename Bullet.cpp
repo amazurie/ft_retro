@@ -42,8 +42,8 @@ bool	Bullet::checkCollide(AEntity &ent) const
 		// debug ?
 	}
 
-	else if ((getVec()->getX() == ent.getVec()->getX())
-		|| (getVec()->getY() == ent.getVec()->getY()))
+	else if (ent.checkBox(getVec()->getX(), getVec()->getY(),
+				getVec()->getX(), getVec()->getY()))
 	{
 		return (true);
 	}
@@ -59,4 +59,18 @@ bool	Bullet::checkOOW() const
 	}
 
 	return (false);
+}
+
+void	Bullet::resize(int, int)
+{
+}
+
+bool	Bullet::checkBox(float startX, float startY, float endX, float endY) const
+{
+	int x = getVec()->getX();
+	int y = getVec()->getY();
+
+	if ((startX <= x && startY <= y && endX >= x && endY >= y))
+		return true;
+	return false;
 }

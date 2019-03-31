@@ -6,7 +6,7 @@ Wall::Wall( void )
 }
 
 Wall::Wall( FakeVec *vec, int pos ) :
-	AEntity(WALL, vec), _size(rand() % 10), _pos(pos)
+	AEntity(WALL, vec), _size(rand() % 5 + 5), _pos(pos)
 {
 	return;
 }
@@ -65,8 +65,10 @@ bool	Wall::checkCollide(AEntity &ent) const
 		// debug ?
 	}
 
-	else if ((getVec()->getX() == ent.getVec()->getX())
-		|| (getVec()->getY() == ent.getVec()->getY()))
+	else if ((_pos == 1 && ent.checkBox(getVec()->getX(),
+				getVec()->getY(), getVec()->getX() + _size, getVec()->getY()))
+			|| (_pos == 2 && ent.checkBox(getVec()->getX() - _size,
+				getVec()->getY(), getVec()->getX(), getVec()->getY())))
 	{
 		return (true);
 	}
@@ -82,4 +84,17 @@ bool	Wall::checkOOW() const
 	}
 
 	return (false);
+}
+
+void	Wall::resize(int y, int x)
+{
+	if (x < 100)
+		getVec()->setY(y + 1);
+	else if (_pos == 2)
+		getVec()->setX(x);
+}
+
+bool	Wall::checkBox(float, float, float, float) const
+{
+	return false;
 }

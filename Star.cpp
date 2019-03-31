@@ -57,3 +57,9 @@ bool	Star::checkOOW() const
 
 	return (false);
 }
+
+bool	Star::checkBox(float startX, float startY, float endX, float endY) const
+{
+	(void)startX;(void)startY;(void)endX;(void)endY;
+	return (false);
+}

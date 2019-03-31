@@ -194,3 +194,9 @@ void	EntityList::renderAll(void)
 	}
 }
 
+
+void	EntityList::resize(int y, int x)
+{
+	for (unsigned int i = 0; i < _nbEnts; i++)
+		_list[i]->resize(y, x);
+}

@@ -41,8 +41,6 @@ void		Player::render(void)
 	addstr("|=|=|");
 	move(y + 1, x - 3);
 	addstr("|=| |=|");
-	move(y + 2, x - 2);
-	addstr("|| ||");
 	attroff(COLOR_PAIR(1));
 }
 
@@ -61,8 +59,8 @@ bool	Player::checkCollide(AEntity &ent) const
 		// debug ?
 	}
 
-	if ((getVec()->getX() == ent.getVec()->getX())
-		|| (getVec()->getY() == ent.getVec()->getY()))
+	if (ent.checkBox(getVec()->getX() - 3, getVec()->getY() - 2,
+				getVec()->getX() + 3, getVec()->getY() + 1))
 	{
 		return (true);
 	}
@@ -73,4 +71,13 @@ bool	Player::checkCollide(AEntity &ent) const
 bool	Player::checkOOW() const
 {
 	return (false);
+}
+
+void	Player::resize(int, int)
+{
+}
+
+bool	Player::checkBox(float, float, float, float) const
+{
+	return false;
 }
