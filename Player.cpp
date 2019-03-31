@@ -90,10 +90,17 @@ bool	Player::checkBox(float startX, float startY, float endX, float endY) const
 
 int		Player::bulletNum() const
 {
-	return 0;
+	return 2;
 }
 
-AEntity	**Player::getBullets() const
+AEntity	*Player::getBullets(int & i) const
 {
+	if (i == 1)
+	{
+		i--;
+		return new Bullet(new FakeVec(getVec()->getX() - 1, getVec()->getY() - 2));
+	}
+	else if (i-- == 0)
+		return new Bullet(new FakeVec(getVec()->getX() + 1, getVec()->getY() - 2));
 	return NULL;
 }

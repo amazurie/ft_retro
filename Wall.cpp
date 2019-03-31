@@ -112,7 +112,7 @@ int		Wall::bulletNum() const
 	return 0;
 }
 
-AEntity	**Wall::getBullets() const
+AEntity	*Wall::getBullets(int &) const
 {
 	return NULL;
 }

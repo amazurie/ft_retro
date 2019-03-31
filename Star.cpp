@@ -76,7 +76,7 @@ int		Star::bulletNum() const
 	return 0;
 }
 
-AEntity	**Star::getBullets() const
+AEntity	*Star::getBullets(int &) const
 {
 	return NULL;
 }

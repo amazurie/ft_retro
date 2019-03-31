@@ -80,7 +80,7 @@ int		Bullet::bulletNum() const
 	return 0;
 }
 
-AEntity	**Bullet::getBullets() const
+AEntity	*Bullet::getBullets(int &) const
 {
 	return NULL;
 }
