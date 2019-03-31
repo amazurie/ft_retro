@@ -96,7 +96,7 @@ int		Player::bulletNum() const
 	return 2;
 }
 
-AEntity *Player::getBullets(int & i) const
+AEntity *Player::getBullets(int & i)
 {
 	if (i == 2)
 	{

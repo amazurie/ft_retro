@@ -108,7 +108,7 @@ int		Enemy::bulletNum() const
 	return 0;
 }
 
-AEntity	*Enemy::getBullets(int &) const
+AEntity	*Enemy::getBullets(int &)
 {
 	return NULL;
 }

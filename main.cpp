@@ -62,7 +62,7 @@ int		main(void)
 
 	while (1)
 	{
-		usleep(30000);
+		usleep(3000);
 		timeout(0);
 		entities.updateAll();
 		entities.checkOOW();
