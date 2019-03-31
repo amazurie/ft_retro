@@ -41,11 +41,13 @@ void	check_input(Player *p)
 	}
 	while ((c = getch()) != ERR)
 	{
-		if (c == 'w')
+		if ((c == 'w') && ((p->getVec()->getY() - 3) >= 0))
+		{
 			p->getVec()->setY(p->getVec()->getY() - 1);
+		}
 		else if (c == 'a')
 			p->getVec()->setX(p->getVec()->getX() - 2);
-		else if (c == 's')
+		else if (c == 's' && ((p->getVec()->getY() + 3) <= WindowHelper::getY()))
 			p->getVec()->setY(p->getVec()->getY() + 1);
 		else if (c == 'd')
 			p->getVec()->setX(p->getVec()->getX() + 2);
