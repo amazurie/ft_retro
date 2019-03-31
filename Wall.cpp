@@ -94,7 +94,15 @@ void	Wall::resize(int y, int x)
 		getVec()->setX(x);
 }
 
-bool	Wall::checkBox(float, float, float, float) const
+bool	Wall::checkBox(float startX, float startY, float endX, float endY) const
 {
-	return false;
+	if (startY > getVec()->getY())
+		return false;
+	if (endY < getVec()->getY())
+		return false;
+	if (_pos == 1 && startX > getVec()->getX() + _size)
+		return false;
+	if (_pos != 1 && endX < getVec()->getX() - _size)
+		return false;
+	return true;
 }

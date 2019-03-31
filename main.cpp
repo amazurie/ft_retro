@@ -52,7 +52,14 @@ int		main(void)
 		timeout(0);
 		entities.updateAll();
 		entities.checkOOW();
-		entities.checkCollide();
+		if (entities.checkCollide())
+		{
+			while (1)
+			{
+				move(WindowHelper::getY() / 2, WindowHelper::getX() / 2 - 4);
+				addstr("YOU LOSE!");
+			}
+		}
 		entities.resize(WindowHelper::getY(), WindowHelper::getX());
 		check_input(p);
 		count++;

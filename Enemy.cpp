@@ -87,7 +87,15 @@ void	Enemy::resize(int, int)
 {
 }
 
-bool	Enemy::checkBox(float, float, float, float) const
+bool	Enemy::checkBox(float startX, float startY, float endX, float endY) const
 {
-	return false;
+	if (startY > getVec()->getY())
+		return false;
+	else if (startX > getVec()->getX() + 3)
+		return false;
+	else if (endX < getVec()->getX() - 2)
+		return false;
+	else if (endY < getVec()->getY() - 2)
+		return false;
+	return true;
 }
