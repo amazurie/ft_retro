@@ -13,6 +13,15 @@ void	check_input(Player *p)
 {
 	char	c;
 
+	while (WindowHelper::getResized())
+	{
+		c = getch();
+		if (c == 'p')
+		{
+			WindowHelper::setResized(false);
+			break;
+		}
+	}
 	while ((c = getch()) != ERR)
 	{
 		if (c == 'w')
@@ -23,6 +32,8 @@ void	check_input(Player *p)
 			p->getVec()->setY(p->getVec()->getY() + 1);
 		else if (c == 'd')
 			p->getVec()->setX(p->getVec()->getX() + 1);
+		else if (c == 'p')
+			WindowHelper::setResized(true);
 	}
 }
 
@@ -39,15 +50,17 @@ int		main(void)
 	{
 		usleep(3000);
 		timeout(0);
-		check_input(p);
 		entities.updateAll();
+		entities.checkOOW();
+		entities.resize(WindowHelper::getY(), WindowHelper::getX());
+		check_input(p);
 		count++;
 		if (count > 300)
 		{
 			entities.addEnt(new Enemy(new FakeVec((rand() % (WindowHelper::getX() / 2) + (WindowHelper::getX() / 4)), 0)));
 			count = 0;
 		}
-		if (count % 10 == 0)
+		if (count % 10 == 0 && WindowHelper::getX() > 100)
 		{
 			entities.addEnt(new Wall(new FakeVec(0, 0), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), 0), 2));

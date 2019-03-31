@@ -30,6 +30,7 @@ class AEntity
 
 		virtual void update(void) = 0;
 		virtual void render(void) = 0;
+		virtual void resize(int y, int x) = 0;
 
 		virtual bool checkCollide(AEntity &ent) const = 0;
 		virtual bool checkOOW() const = 0;

@@ -21,6 +21,7 @@ class Enemy : public AEntity
 		void update(void);
 		void render(void);
 
+		void resize(int y, int x);
 		bool checkCollide(AEntity &ent) const;
 		bool checkOOW() const;
 };

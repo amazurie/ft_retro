@@ -76,9 +76,13 @@ bool	Enemy::checkCollide(AEntity &ent) const
 bool	Enemy::checkOOW() const
 {
 	if (getVec()->getY() > WindowHelper::getY())
-	{
 		return (true);
-	}
+	else if (getVec()->getX() > WindowHelper::getX())
+		return (true);
 
 	return (false);
+}
+
+void	Enemy::resize(int, int)
+{
 }

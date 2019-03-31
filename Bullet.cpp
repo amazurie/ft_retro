@@ -60,3 +60,7 @@ bool	Bullet::checkOOW() const
 
 	return (false);
 }
+
+void	Bullet::resize(int, int)
+{
+}

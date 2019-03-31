@@ -19,7 +19,8 @@ class Wall : public AEntity
 
 		void render(void);
 		void update(void);
-	
+		void resize(int y, int x);
+
 		bool checkCollide(AEntity &ent) const;
 		bool checkOOW() const;
 

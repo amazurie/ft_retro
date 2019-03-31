@@ -6,7 +6,7 @@ Wall::Wall( void )
 }
 
 Wall::Wall( FakeVec *vec, int pos ) :
-	AEntity(WALL, vec), _size(rand() % 10), _pos(pos)
+	AEntity(WALL, vec), _size(rand() % 5 + 5), _pos(pos)
 {
 	return;
 }
@@ -82,4 +82,12 @@ bool	Wall::checkOOW() const
 	}
 
 	return (false);
+}
+
+void	Wall::resize(int y, int x)
+{
+	if (x < 100)
+		getVec()->setY(y + 1);
+	else if (_pos == 2)
+		getVec()->setX(x);
 }

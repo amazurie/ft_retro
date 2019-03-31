@@ -41,8 +41,6 @@ void		Player::render(void)
 	addstr("|=|=|");
 	move(y + 1, x - 3);
 	addstr("|=| |=|");
-	move(y + 2, x - 2);
-	addstr("|| ||");
 	attroff(COLOR_PAIR(1));
 }
 
@@ -73,4 +71,8 @@ bool	Player::checkCollide(AEntity &ent) const
 bool	Player::checkOOW() const
 {
 	return (false);
+}
+
+void	Player::resize(int, int)
+{
 }
