@@ -67,7 +67,7 @@ bool	Wall::checkCollide(AEntity &ent)
 				getVec()->getY(), getVec()->getX() + _size, getVec()->getY()))
 			|| (_pos == 2 && ent.checkBox(getVec()->getX() - _size,
 				getVec()->getY(), getVec()->getX(), getVec()->getY())))
-	{
+	{	
 		return (true);
 	}
 

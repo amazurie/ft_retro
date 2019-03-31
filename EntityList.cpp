@@ -123,9 +123,7 @@ void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 
 	// Enemy & Bullets, Bullets & Bullets
 	else if (((BULLET_PLAYER == ent1.getType()) && (ENEMY == ent2.getType()))
-		|| ((ENEMY == ent1.getType()) && (BULLET_PLAYER == ent2.getType()))
-		|| ((BULLET_PLAYER == ent1.getType()) && (BULLET_ENEMY == ent2.getType()))
-		|| ((BULLET_ENEMY == ent1.getType()) && (BULLET_PLAYER == ent2.getType())))
+		|| ((ENEMY == ent1.getType()) && (BULLET_PLAYER == ent2.getType())))
 	{
 		WindowHelper::addScore(100);
 		delEnt(&ent1);

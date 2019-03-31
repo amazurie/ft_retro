@@ -49,7 +49,8 @@ bool	Bullet::checkCollide(AEntity &ent)
 
 bool	Bullet::checkOOW() const
 {
-	if (getVec()->getY() < 0)
+	if ((getVec()->getY() < 0) || (getVec()->getX() < 0)
+		|| (getVec()->getX() > WindowHelper::getX()))
 		return (true);
 
 	return (false);
