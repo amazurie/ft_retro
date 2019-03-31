@@ -11,7 +11,8 @@ typedef enum Type
 	PLAYER,
 	ENEMY,
 	BULLET,
-	WALL
+	WALL,
+	STAR
 } EntType;
 
 class AEntity
@@ -19,6 +20,7 @@ class AEntity
 	private:
 		EntType		_type;
 		FakeVec		*_vec;
+		bool		_render;
 
 	public:
 		AEntity(void);
@@ -38,6 +40,10 @@ class AEntity
         EntType		getType() const;
 
         void setVec(FakeVec *x);
+
+        void enableRender();
+        void disableRender();
+        bool isRendered() const;
 };
 
 #endif // ENTITY_INTERFACE_H

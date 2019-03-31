@@ -8,6 +8,7 @@
 #include "FakeVec.hpp"
 #include "EntityList.hpp"
 #include "Enemy.hpp"
+#include "Star.hpp"
 
 void	check_input(Player *p)
 {
@@ -41,6 +42,7 @@ int		main(void)
 		timeout(0);
 		check_input(p);
 		entities.updateAll();
+		entities.checkOOW();
 		count++;
 		if (count > 300)
 		{
@@ -49,6 +51,7 @@ int		main(void)
 		}
 		if (count % 10 == 0)
 		{
+			entities.addEnt(new Star(new FakeVec((rand() % WindowHelper::getX()), 0)));
 			entities.addEnt(new Wall(new FakeVec(0, 0), 1));
 			entities.addEnt(new Wall(new FakeVec(WindowHelper::getX(), 0), 2));
 		}

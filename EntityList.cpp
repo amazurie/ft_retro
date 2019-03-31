@@ -125,6 +125,16 @@ void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
 		delEnt(&ent1);
 		delEnt(&ent2);
 	}
+
+	//Stars
+	if (STAR == ent1.getType())
+	{
+		ent1.disableRender();
+	}
+	else if (STAR == ent2.getType())
+	{
+		ent2.disableRender();
+	}
 }
 
 // Fonction add dans EntityList qui prend en param un tableau d'ent qui existent
@@ -176,6 +186,11 @@ void	EntityList::updateAll(void)
 void	EntityList::renderAll(void)
 {
 	for (unsigned int i = 0; i < _nbEnts; i++)
-		_list[i]->render();
+	{
+		if (_list[i]->isRendered())
+			_list[i]->render();
+		else
+			_list[i]->enableRender();
+	}
 }
 
