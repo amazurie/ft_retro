@@ -59,8 +59,8 @@ bool	Player::checkCollide(AEntity &ent) const
 		// debug ?
 	}
 
-	if ((getVec()->getX() == ent.getVec()->getX())
-		|| (getVec()->getY() == ent.getVec()->getY()))
+	if (ent.checkBox(getVec()->getX() - 3, getVec()->getY() - 2,
+				getVec()->getX() + 3, getVec()->getY() + 1))
 	{
 		return (true);
 	}
@@ -75,4 +75,9 @@ bool	Player::checkOOW() const
 
 void	Player::resize(int, int)
 {
+}
+
+bool	Player::checkBox(float, float, float, float) const
+{
+	return false;
 }

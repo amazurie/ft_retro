@@ -33,6 +33,7 @@ class AEntity
 		virtual void resize(int y, int x) = 0;
 
 		virtual bool checkCollide(AEntity &ent) const = 0;
+		virtual bool checkBox(float, float, float, float) const = 0;
 		virtual bool checkOOW() const = 0;
 
         FakeVec		*getVec(void) const;

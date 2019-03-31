@@ -65,8 +65,10 @@ bool	Wall::checkCollide(AEntity &ent) const
 		// debug ?
 	}
 
-	else if ((getVec()->getX() == ent.getVec()->getX())
-		|| (getVec()->getY() == ent.getVec()->getY()))
+	else if ((_pos == 1 && ent.checkBox(getVec()->getX(),
+				getVec()->getY(), getVec()->getX() + _size, getVec()->getY()))
+			|| (_pos == 2 && ent.checkBox(getVec()->getX() - _size,
+				getVec()->getY(), getVec()->getX(), getVec()->getY())))
 	{
 		return (true);
 	}
@@ -90,4 +92,9 @@ void	Wall::resize(int y, int x)
 		getVec()->setY(y + 1);
 	else if (_pos == 2)
 		getVec()->setX(x);
+}
+
+bool	Wall::checkBox(float, float, float, float) const
+{
+	return false;
 }

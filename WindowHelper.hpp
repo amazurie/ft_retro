@@ -9,7 +9,7 @@ class WindowHelper
 	private:
 		static int _x;
 		static int _y;
-		static bool _resized;
+		static bool _pause;
 
     public:
 		WindowHelper(void);
@@ -20,11 +20,11 @@ class WindowHelper
 
         static void		setX(int);
         static void		setY(int);
-		static void		setResized(bool);
+		static void		setPause(bool);
 
 		static int	getX(void);
 		static int	getY(void);
-		static bool	getResized(void);
+		static bool	getPause(void);
 };
 
 WindowHelper* env(WindowHelper *c = NULL);

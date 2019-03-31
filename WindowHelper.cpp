@@ -4,7 +4,7 @@
 
 int		WindowHelper::_x = 0;
 int		WindowHelper::_y = 0;
-bool	WindowHelper::_resized = false;
+bool	WindowHelper::_pause = false;
 
 void	onResize(int)
 {
@@ -16,7 +16,7 @@ void	onResize(int)
 	getmaxyx(stdscr, y, x);
 	WindowHelper::setY(y);
 	WindowHelper::setX(x);
-	WindowHelper::setResized(true);
+	WindowHelper::setPause(true);
 	move(y / 2, x / 2 - 3);
 	addstr("PAUSED");
 }
@@ -78,9 +78,9 @@ void WindowHelper::setY(int y)
 	_y = y;
 }
 
-void WindowHelper::setResized(bool b)
+void WindowHelper::setPause(bool b)
 {
-	_resized = b;
+	_pause = b;
 }
 
 int WindowHelper::getX(void)
@@ -93,7 +93,7 @@ int WindowHelper::getY(void)
 	return _y;
 }
 
-bool WindowHelper::getResized(void)
+bool WindowHelper::getPause(void)
 {
-	return _resized;
+	return _pause;
 }

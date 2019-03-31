@@ -13,12 +13,12 @@ void	check_input(Player *p)
 {
 	char	c;
 
-	while (WindowHelper::getResized())
+	while (WindowHelper::getPause())
 	{
 		c = getch();
 		if (c == 'p')
 		{
-			WindowHelper::setResized(false);
+			WindowHelper::setPause(false);
 			break;
 		}
 	}
@@ -33,7 +33,7 @@ void	check_input(Player *p)
 		else if (c == 'd')
 			p->getVec()->setX(p->getVec()->getX() + 1);
 		else if (c == 'p')
-			WindowHelper::setResized(true);
+			WindowHelper::setPause(true);
 	}
 }
 
@@ -52,6 +52,7 @@ int		main(void)
 		timeout(0);
 		entities.updateAll();
 		entities.checkOOW();
+		entities.checkCollide();
 		entities.resize(WindowHelper::getY(), WindowHelper::getX());
 		check_input(p);
 		count++;

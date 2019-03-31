@@ -23,6 +23,7 @@ class Enemy : public AEntity
 
 		void resize(int y, int x);
 		bool checkCollide(AEntity &ent) const;
+		bool checkBox(float startX, float startY, float endX, float endY) const;
 		bool checkOOW() const;
 };
 
