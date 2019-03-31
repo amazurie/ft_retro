@@ -33,19 +33,17 @@ void		Player::render(void)
 	int	x = getVec()->getX();
 	int	y = getVec()->getY();
 
-	move(y - 3, x - 4);
 	attron(COLOR_PAIR(1));
-	addstr("  _ _ _  ");
-	move(y - 2, x - 4);
-	addstr("||=====||");
+	move(y - 2, x - 3);
+	addstr("||   ||");
 	move(y - 1, x - 3);
-	addstr("\\=====/");
-	move(y, x - 3);
-	addstr("|=====|");
-	move(y + 1, x - 4);
-	addstr("|=======|");
-	move(y + 2, x - 4);
-	addstr("|| ||| || ");
+	addstr("|=| |=|");
+	move(y, x - 2);
+	addstr("|=|=|");
+	move(y + 1, x - 3);
+	addstr("|=| |=|");
+	move(y + 2, x - 2);
+	addstr("|| ||");
 	attroff(COLOR_PAIR(1));
 }
 

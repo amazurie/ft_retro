@@ -47,12 +47,10 @@ void	Enemy::render()
 	if (y > 1)
 	{
 		move(y - 1, x - 2);
-		addstr("|    |");
+		addstr("| || |");
 	}
-	move(y, x - 3);
-	addstr("| |  | |");
-	move(y + 1, x);
-	addstr("||");
+	move(y, x - 2);
+	addstr("|\\__/|");
 	attroff(COLOR_PAIR(3));
 }
 
