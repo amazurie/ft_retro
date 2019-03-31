@@ -42,7 +42,7 @@ void		Star::update(void)
 	getVec()->setY(getVec()->getY() + 0.2);
 }
 
-bool	Star::checkCollide(AEntity &ent) const
+bool	Star::checkCollide(AEntity &ent)
 {
 	if (ent.checkBox(getVec()->getX(), getVec()->getY(),
 				getVec()->getX(), getVec()->getY()))

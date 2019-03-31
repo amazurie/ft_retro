@@ -34,7 +34,7 @@ class AEntity
 		virtual void render(void) = 0;
 		virtual void resize(int y, int x) = 0;
 
-		virtual bool checkCollide(AEntity &ent) const = 0;
+		virtual bool checkCollide(AEntity &ent) = 0;
 		virtual bool checkBox(float, float, float, float) const = 0;
 		virtual bool checkOOW() const = 0;
 		virtual	int  bulletNum() = 0;

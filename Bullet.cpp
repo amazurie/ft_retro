@@ -38,7 +38,7 @@ void	Bullet::update()
 	getVec()->setY(getVec()->getY() - 1);
 }
 
-bool	Bullet::checkCollide(AEntity &ent) const
+bool	Bullet::checkCollide(AEntity &ent)
 {
 	if (ent.checkBox(getVec()->getX(), getVec()->getY(),
 				getVec()->getX(), getVec()->getY()))

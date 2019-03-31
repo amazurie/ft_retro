@@ -57,7 +57,7 @@ void		Player::update(void)
 // No type check required, either enemy or wall makes the player die and
 // bullets are faster than the player
 
-bool	Player::checkCollide(AEntity &ent) const
+bool	Player::checkCollide(AEntity &ent)
 {
 	if ((WALL != ent.getType()) && (ENEMY != ent.getType()))
 	{

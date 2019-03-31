@@ -61,7 +61,7 @@ void		Wall::update(void)
 	getVec()->setY(getVec()->getY() + 0.1);
 }
 
-bool	Wall::checkCollide(AEntity &ent) const
+bool	Wall::checkCollide(AEntity &ent)
 {
 	if (BULLET != ent.getType())
 	{

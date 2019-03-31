@@ -17,7 +17,7 @@ class Star : public AEntity
 		void render(void);
 		void update(void);
 	
-		bool checkCollide(AEntity &ent) const;
+		bool checkCollide(AEntity &ent);
 		bool checkOOW() const;
 		bool checkBox(float, float, float, float) const;
 		void resize(int, int);

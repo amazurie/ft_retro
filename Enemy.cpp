@@ -10,7 +10,8 @@ Enemy::Enemy(FakeVec *vec) : AEntity( ENEMY, vec ),
 {
 }
 
-Enemy::Enemy(Enemy const & src) : AEntity(src.getType(), src.getVec())
+Enemy::Enemy(Enemy const & src) :
+	AEntity(src.getType(), src.getVec()), _direction(src._direction)
 {
 }
 
@@ -21,17 +22,21 @@ Enemy::~Enemy(void)
 Enemy& Enemy::operator=(Enemy const &rhs)
 {
 	AEntity::operator=(rhs);
+	_direction = rhs._direction;
 	return *this;
 }
 
 void	Enemy::update()
 {
+	if (getVec()->getX() <= 11
+			|| getVec()->getX() >= WindowHelper::getX() - 11)
+		_direction = (_direction == 1) ? 2 : 1;
 	getVec()->setY(getVec()->getY() + 0.05);
-/*	if (_direction == 1)
-		getVec()->setX(getVec()->getX() + 1);
+	if (_direction == 1)
+		getVec()->setX(getVec()->getX() + 0.05);
 	else
-		getVec()->setX(getVec()->getX() - 1);
-*/}
+		getVec()->setX(getVec()->getX() - 0.05);
+}
 
 void	Enemy::render()
 {
@@ -60,7 +65,7 @@ void	Enemy::render()
 // No type check required because enemies doesn't collide with walls
 // and player is already checked, so bullets only
 
-bool	Enemy::checkCollide(AEntity &ent) const
+bool	Enemy::checkCollide(AEntity &ent)
 {
 	if (BULLET != ent.getType())
 	{

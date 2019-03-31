@@ -19,7 +19,7 @@ class Bullet : public AEntity
 		void	update(void);
 
 		void	resize(int y, int x);
-		bool	checkCollide(AEntity &ent) const;
+		bool	checkCollide(AEntity &ent);
 		bool	checkBox(float startX, float startY, float endX, float endY) const;
 		bool 	checkOOW() const;
 		int		bulletNum();
