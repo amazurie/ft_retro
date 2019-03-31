@@ -17,7 +17,8 @@ class Bullet : public AEntity
 
 		void	render(void);
 		void	update(void);
-		bool	checkCollide(AEntity &entity);
+		bool	checkCollide(AEntity &ent) const;
+		bool 	checkOOW() const;
 
 		Bullet &	operator=( Bullet const & rhs );
 };

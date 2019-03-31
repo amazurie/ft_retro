@@ -85,30 +85,87 @@ bool		EntityList::delEnt(AEntity *ent)
 	return (true);
 }
 
+bool	EntityList::addEntsTab(unsigned int size, AEntity** ents)
+{
+	if ((0 == size) || (NULL == ents)
+		|| (size > _nbMaxEnts) || ((_nbEnts + size) > _nbMaxEnts))
+	{
+		return (false);
+	}
+
+	for (unsigned int i = 0; i < size; ++i)
+		if (NULL != ents[i])
+			addEnt(ents[i]);
+
+	return (true);
+}
+
+void	EntityList::_collideEvent(AEntity & ent1, AEntity & ent2)
+{
+	// Player & All
+	if (PLAYER == ent1.getType()) // Player can't be ent2 because checked first
+	{
+		delEnt(&ent1);
+	}
+
+	// Wall & Bullets
+	else if ((WALL == ent1.getType()) && (BULLET == ent2.getType()))
+	{
+		delEnt(&ent2);
+	}
+	else if ((BULLET == ent1.getType()) && (WALL == ent2.getType()))
+	{
+		delEnt(&ent1);
+	}
+
+	// Enemy & Bullets
+	if (((BULLET == ent1.getType()) && (ENEMY == ent2.getType()))
+		|| ((ENEMY == ent1.getType()) && (ENEMY == ent2.getType())))
+	{
+		delEnt(&ent1);
+		delEnt(&ent2);
+	}
+}
+
+// Fonction add dans EntityList qui prend en param un tableau d'ent qui existent
+
+void	EntityList::checkOOW()
+{
+	if ((0 == _nbEnts) || (0 == _nbMaxEnts))
+		return;
+	for (unsigned int i = 0; i < _nbEnts; ++i)
+	{
+		if (PLAYER == _list[i]->getType())
+			continue;
+		else if (_list[i]->checkOOW())
+			delEnt(_list[i]);
+	}
+}
+
+
 // Player can collide with: Horizontal Walls, Enemies
 // Enemies can collide with: Player, Bullets
 
 bool	EntityList::checkCollide()
 {
-	return false;
-//	if ((0 == _nbEnts) || (0 == _nbMaxEnts))
-//		return;
-//
-//	bool		playerCollision = false;
-//	AEntity*	player = _list[0];
-//
-//	for (unsigned int i = 0; i < _nbEnts; ++i)
-//	{
-//		for (unsigned int j = (i + 1); j < _nbEnts; ++j)
-//		{
-//			if (_list[i].isCollide(_list[j]))
-//			{
-//				// do stuff
-//			}			
-//		}
-//	}
-}
+	if ((0 == _nbEnts) || (0 == _nbMaxEnts))
+		return (false);
 
+	bool	playerDied = false;
+	for (unsigned int i = 0; i < _nbEnts; ++i)
+	{
+		for (unsigned int j = (i + 1); j < _nbEnts; ++j)
+		{
+			if (_list[i]->checkCollide(*(_list[j])))
+			{
+				_collideEvent(*(_list[i]), *(_list[j]));
+				if (0 == i)
+					playerDied = true;
+			}			
+		}
+	}
+	return (playerDied);
+}
 
 void	EntityList::updateAll(void)
 {
@@ -121,3 +178,4 @@ void	EntityList::renderAll(void)
 	for (unsigned int i = 0; i < _nbEnts; i++)
 		_list[i]->render();
 }
+

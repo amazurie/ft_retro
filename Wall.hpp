@@ -19,7 +19,9 @@ class Wall : public AEntity
 
 		void render(void);
 		void update(void);
-		bool checkCollide(AEntity &entity);
+	
+		bool checkCollide(AEntity &ent) const;
+		bool checkOOW() const;
 
 		Wall &	operator=( Wall const & rhs );
 };

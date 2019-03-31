@@ -14,7 +14,6 @@ Wall::Wall( FakeVec *vec, int pos ) :
 Wall::Wall( Wall const & src ) :
 	AEntity(src.getType(), src.getVec()), _size(src._size), _pos(src._pos)
 {
-	*this = src;
 	return;
 }
 
@@ -59,7 +58,28 @@ void		Wall::update(void)
 	getVec()->setY(getVec()->getY() + 0.1);
 }
 
-bool	Wall::checkCollide(AEntity &entity)
+bool	Wall::checkCollide(AEntity &ent) const
 {
-	return false;
+	if (BULLET != ent.getType())
+	{
+		// debug ?
+	}
+
+	else if ((getVec()->getX() == ent.getVec()->getX())
+		|| (getVec()->getY() == ent.getVec()->getY()))
+	{
+		return (true);
+	}
+
+	return (false);
+}
+
+bool	Wall::checkOOW() const
+{
+	if (getVec()->getY() > WindowHelper::getY())
+	{
+		return (true);
+	}
+
+	return (false);
 }

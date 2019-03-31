@@ -4,6 +4,7 @@
 
 # include <curses.h>
 # include "FakeVec.hpp"
+# include "WindowHelper.hpp"
 
 typedef enum Type
 {
@@ -30,7 +31,8 @@ class AEntity
 		virtual void update(void) = 0;
 		virtual void render(void) = 0;
 
-		virtual bool checkCollide(AEntity &entity) = 0;
+		virtual bool checkCollide(AEntity &ent) const = 0;
+		virtual bool checkOOW() const = 0;
 
         FakeVec		*getVec(void) const;
         EntType		getType() const;

@@ -11,9 +11,8 @@ Player::Player( FakeVec *vec ) :
 	return;
 }
 
-Player::Player( Player const & src )
+Player::Player( Player const & src ) : AEntity(src.getType(), src.getVec())
 {
-	*this = src;
 	return;
 }
 
@@ -52,7 +51,26 @@ void		Player::update(void)
 
 }
 
-bool	Player::checkCollide(AEntity &entity)
+// No type check required, either enemy or wall makes the player die and
+// bullets are faster than the player
+
+bool	Player::checkCollide(AEntity &ent) const
 {
-	return false;
+	if ((WALL != ent.getType()) && (ENEMY != ent.getType()))
+	{
+		// debug ?
+	}
+
+	if ((getVec()->getX() == ent.getVec()->getX())
+		|| (getVec()->getY() == ent.getVec()->getY()))
+	{
+		return (true);
+	}
+
+	return (false);
+}
+
+bool	Player::checkOOW() const
+{
+	return (false);
 }
